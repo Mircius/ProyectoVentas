@@ -11,6 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('listaClientes');
-});
+Route::get('/', 'ClientesControler@getClientes');
+
+Route::get('/create', 'ClientesControler@getCreate');
+Route::post('/create', 'ClientesControler@save');

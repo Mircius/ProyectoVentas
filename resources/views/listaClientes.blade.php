@@ -38,7 +38,7 @@
 							<th>Nombre</th>
 							<th>Apellidos</th>
 							<th>NIF</th>
-							<th>Código postal</th>
+							<th>C.P.</th>
 							<th>Localidad</th>
 							<th></th> <!-- Icono Lupa -->
 						</tr>
@@ -60,7 +60,7 @@
 		<div class="row">
 			<div class="col-md-1 col-lg-1"></div>
 				<div class="col-md-2 col-lg-2">
-					<button type="button" class="btn btn-dark">Añadir Cliente</button>
+					<a type="button" class="btn btn-dark" href="{{ URL::to('/create') }}">Añadir Cliente</a>
 				</div>
 		</div>
 	</div>
