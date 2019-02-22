@@ -3,7 +3,7 @@
 <head>
 	<title></title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
 	<script type="text/javascript" src="code.js"></script>
 
 	<!-- BOOTSRAP -->
@@ -17,11 +17,10 @@
 	<!-- Barra de navegación -->
 		@include('navbar')
 		
-		<br>
 	<!-- Componente Errores  -->
-
-
-
+	<div class="row compErrors">
+		@include('errors')
+	</div>
 	<!-- Titulo -->
 		<div class="row bg-dark d-flex justify-content-center">
 			<h1 class="bg-dark text-white">Clientes</h1>
@@ -29,14 +28,38 @@
 		<br>
 	<!-- Tabla clientes -->
 		<div class="row">
-			
-		</div>
 
+			<div class="col-md-1 col-lg-1"></div>
+			
+			<div class="col-md-10 col-lg-10">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Nombre</th>
+							<th>Apellidos</th>
+							<th>NIF</th>
+							<th>Código postal</th>
+							<th>Localidad</th>
+							<th></th> <!-- Icono Lupa -->
+						</tr>
+					</thead>
+					<tbody>
+						<!-- Datos clientes -->
+
+
+					</tbody>	
+				</table>
+			</div>
+
+			<div class="col-md-1 col-lg-1"></div>
+
+		</div>
 		<br><br>
 
 	<!-- Boton nuevos clientes -->
 		<div class="row">
-				<div>
+			<div class="col-md-1 col-lg-1"></div>
+				<div class="col-md-2 col-lg-2">
 					<button type="button" class="btn btn-dark">Añadir Cliente</button>
 				</div>
 		</div>
