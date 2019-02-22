@@ -32,7 +32,7 @@
 			<div class="col-md-1 col-lg-1"></div>
 
 			<div class="col-md-10 col-lg-10">
-				<form action('ClientesControler@getCreate')>
+				<form method="post" action('ClientesControler@save')>
 
 				 	{{ csrf_field() }}
 				 	<div class="row">
