@@ -1,0 +1,14 @@
+.compErrors{
+	height: 45px;
+	margin: 10px;
+	font-size: 16px;
+}
+.alert-danger{
+	height: 45px;
+}
+
+.navbar{
+	height: 50px;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+}
