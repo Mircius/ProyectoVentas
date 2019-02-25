@@ -13,18 +13,18 @@ class CrearTablaClientes extends Migration
      */
     public function up()
     {
-    Schema::dropIfExists('clients');
+    Schema::dropIfExists('clientes');
 
-    Schema::create('clients', function($table){
-        $table->increments('IdClient');
-        $table->string('Nombre');
-        $table->string('Email')->unique();
-        $table->integer('Telefono');
-        $table->string('Direccio');
-        $table->string('CIFNIF')->unique();
-        $table->string('Provincia');
-        $table->string('Localidad');
-        $table->integer('CodigoPostal');
+    Schema::create('clientes', function($table){
+        $table->increments('idClient');
+        $table->string('nombre');
+        $table->string('email')->unique();
+        $table->integer('telefono');
+        $table->string('direccion');
+        $table->string('cifNif')->unique();
+        $table->string('provincia');
+        $table->string('localidad');
+        $table->integer('codigoPostal');
         $table->timestamps();
     });
         //

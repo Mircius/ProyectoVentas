@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Cliente;
 
 class ClientesControler extends Controller
 {
@@ -15,14 +16,18 @@ class ClientesControler extends Controller
 
 		return view('nuevoCliente');
 	}
+	// array('pelicula'=>$pelicula)
 
 	public function save(Request $request){
-		$cliente = New Cliente;
-		$cliente->title = $request->input('title');
-		$cliente->year = $request->input('year');
-		$cliente->director = $request->input('director');
-		$cliente->poster = $request->input('poster');
-		$cliente->synopsis = $request->input('synopsis');
+		$cliente = new Cliente;
+			$cliente->nombre = $request->input('nombre');
+			$cliente->email = $request->input('email');
+			$cliente->telefono = $request->input('telefono');
+			$cliente->direccion = $request->input('direccion');
+			$cliente->cifNif = $request->input('cifNif');
+			$cliente->provincia = $request->input('provincia');
+			$cliente->localidad = $request->input('localidad');
+			$cliente->codigoPostal = $request->input('cp');
 		$cliente->save();
 
 		return view('listaClientes');

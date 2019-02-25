@@ -32,47 +32,47 @@
 			<div class="col-md-1 col-lg-1"></div>
 
 			<div class="col-md-10 col-lg-10">
-				<form action('ClientesControler@getCreate')>
+				<form method="post" action('ClientesControler@save')>
 
 				 	{{ csrf_field() }}
 				 	<div class="row">
 						<div class="form-group col-md-6">
 							<label for="nombre">Nombre:</label>
-							<input type="text" class="form-control" id="nombre">
+							<input type="text" class="form-control" name="nombre" id="nombre">
 						</div>
 						<div class="form-group col-md-6">
 							<label for="email">Email:</label>
-							<input type="text" class="form-control" id="email">
+							<input type="text" class="form-control" name="email" id="email">
 						</div>
 					</div>
 					<div class="row">
 						<div class="form-group col-md-6">
 							<label for="telefono">Teléfono:</label>
-							<input type="text" class="form-control" id="telefono">
+							<input type="text" class="form-control" name="telefono" id="telefono">
 						</div>
 						<div class="form-group col-md-6">
 							<label for="direccion">Dirección:</label>
-							<input type="text" class="form-control" id="direccion">
+							<input type="text" class="form-control" name="direccion" id="direccion">
 						</div>
 					</div>
 					<div class="row">
 						<div class="form-group col-md-6">
 							<label for="cifNif">CIF/NIF:</label>
-							<input type="text" class="form-control" id="cifNif">
+							<input type="text" class="form-control" name="cifNif" id="cifNif">
 						</div>
 						<div class="form-group col-md-6">
 							<label for="provincia">Provincia:</label>
-							<input type="text" class="form-control" id="provincia">
+							<input type="text" class="form-control" name="provincia" id="provincia">
 						</div>
 					</div>
 					<div class="row">
 						<div class="form-group col-md-6">
 							<label for="localidad">Localidad:</label>
-							<input type="text" class="form-control" id="localidad">
+							<input type="text" class="form-control" name="localidad" id="localidad">
 						</div>
 						<div class="form-group col-md-6">
 							<label for="cp">Código Postal:</label>
-							<input type="text" class="form-control" id="cp">
+							<input type="text" class="form-control" name="cp" id="cp">
 						</div>
 					</div>
 					<div class="row">
