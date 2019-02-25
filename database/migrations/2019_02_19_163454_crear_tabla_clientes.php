@@ -21,10 +21,10 @@ class CrearTablaClientes extends Migration
         $table->string('Email')->unique();
         $table->integer('Telefono');
         $table->string('Direccio');
-        $table->string('CIF/NIF')->unique();
+        $table->string('CIFNIF')->unique();
         $table->string('Provincia');
         $table->string('Localidad');
-        $table->integer('Codigo Postal');
+        $table->integer('CodigoPostal');
         $table->timestamps();
     });
         //
