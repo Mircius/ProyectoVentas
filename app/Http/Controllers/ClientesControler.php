@@ -8,36 +8,28 @@ use Exception;
 
 class ClientesControler extends Controller
 {
+	//Vista Principal
     public function getClientes(){
-
-		return view('listaClientes');
+		$clientes = Cliente::select('idClient', 'nombre', 'email', 'cifNif', 'codigoPostal', 'provincia', 'localidad')->get();
+    	return view("listaClientes", compact('clientes'));
 	}
 
+	// Formulario de creacion de clientes
 	public function getCreate(){
 
 		return view('nuevoCliente');
 	}
-	// array('pelicula'=>$pelicula)
-// ry {
-// $password = Input::get('password');
 
-// 	$user = new User;
-// 	$user->name = Input::get('name');
-// 	$user->last_name = Input::get('last_name');
-// 	$user->email = Input::get('email');
-// 	$user->address = Input::get('address');
-//         $user->phone = Input::get('phone');
-//         $user->username = Input::get('username');
-// 	$user->level = Input::get('level');
-//         $user->password = Hash::make($password);
-// 	// guardamos
-// 	$user->save();
 
-// 	//redirigimos a usuarios
-// 	return Redirect::to('users')->with('status', 'ok_create');
-// } catch(Illuminate\Database\QueryException $e) {
-//  return Redirect::to('users')->with('status', 'error_create');
-// } 
+
+	public function getShow($id){
+		$cliente = Cliente::find($id);
+
+		return view('cliente', array('cliente'=>$cliente));
+	}
+	
+	//Funcion de guardado de clientes
+
 	public function save(Request $request){
 		try{
 			$cliente = new Cliente;
@@ -50,15 +42,12 @@ class ClientesControler extends Controller
 			$cliente->localidad = $request->input('localidad');
 			$cliente->codigoPostal = $request->input('cp');
 			$cliente->save();
+			$clientes = Cliente::select('idClient', 'nombre', 'email', 'cifNif', 'codigoPostal', 'provincia', 'localidad')->get();
 		}catch(Exception $e){
 			return back()->withErrors(['Error1'=>'Error del servidor']);		
 		}
+		return view('listaClientes', compact('clientes'));
 
-		return view('listaClientes');
-
-
-		
-		
 	}
 }
 	

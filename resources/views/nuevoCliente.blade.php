@@ -4,8 +4,10 @@
 	<title></title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
+
 	<script type="text/javascript" src="code.js"></script>
 	<script type="text/javascript" src="{{asset('js/componenteErrores.js')}}"></script>
+
 
 	<!-- BOOTSRAP -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
@@ -80,12 +82,15 @@
 							<input type="text" class="form-control" name="cp" id="cp">
 						</div>
 					</div>
+					<br>
 					<div class="row">
-						<div class="col-md-6"">
-							<button type="submit" class="btn btn-dark submit " disabled>Guardar</button>
+
+						<div class="col-md-6">
+							<a type="button" class="btn btn-dark" href="{{ URL::to('/') }}">Cancelar</a>
+
 						</div>
 						<div class="col-md-6 text-right">
-							<a type="button" class="btn btn-dark" href="{{ URL::to('/') }}">Cancelar</a>
+							<button type="submit" class="btn btn-dark" disabled>Guardar</button>
 						</div>
 					</div>
 				</form>
