@@ -7,17 +7,25 @@ use App\Cliente;
 
 class ClientesControler extends Controller
 {
+	//Vista Principal
     public function getClientes(){
-
-		return view('listaClientes');
+		$clientes = Cliente::select('idClient', 'nombre', 'email', 'cifNif', 'codigoPostal', 'provincia', 'localidad')->get();
+    	return view("listaClientes", compact('clientes'));
 	}
 
+	// Formulario de creacion de clientes
 	public function getCreate(){
 
 		return view('nuevoCliente');
 	}
-	// array('pelicula'=>$pelicula)
 
+	public function getShow($id){
+		$cliente = Cliente::find($id);
+
+		return view('cliente', array('cliente'=>$cliente));
+	}
+	
+	//Funcion de guardado de clientes
 	public function save(Request $request){
 		$cliente = new Cliente;
 			$cliente->nombre = $request->input('nombre');
@@ -30,7 +38,9 @@ class ClientesControler extends Controller
 			$cliente->codigoPostal = $request->input('cp');
 		$cliente->save();
 
-		return view('listaClientes');
+
+		$clientes = Cliente::select('idClient', 'nombre', 'email', 'cifNif', 'codigoPostal', 'provincia', 'localidad')->get();
+		return view('listaClientes', compact('clientes'));
 	}
 	
 }

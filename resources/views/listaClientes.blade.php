@@ -4,13 +4,16 @@
 	<title></title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
-	<script type="text/javascript" src="code.js"></script>
+	<script type="text/javascript" src="{{asset('js/listas.js')}}"></script>
 
 	<!-- BOOTSRAP -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+
+	<!-- JQUERY -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
 	<div class="container-fluid">
@@ -36,17 +39,16 @@
 					<thead>
 						<tr>
 							<th>Nombre</th>
-							<th>Apellidos</th>
-							<th>NIF</th>
+							<th>Email</th>
+							<th>CIF/NIF</th>
 							<th>C.P.</th>
+							<th>Provincia</th>
 							<th>Localidad</th>
-							<th></th> <!-- Icono Lupa -->
 						</tr>
 					</thead>
-					<tbody>
+					<tbody id="tbodyClientes">
 						<!-- Datos clientes -->
-
-
+						
 					</tbody>	
 				</table>
 			</div>
@@ -64,5 +66,14 @@
 				</div>
 		</div>
 	</div>
+
+	<script>
+		var clientes = {!! json_encode($clientes->toArray(), JSON_HEX_TAG) !!};
+		$(document).ready(function() {
+			listaClientes(clientes);
+		});
+		
+		
+	</script>
 </body>
 </html>
