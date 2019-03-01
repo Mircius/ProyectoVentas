@@ -15,11 +15,11 @@ function listaClientes(clientes){
 function printLista(encabezado, donde, enlace, cliente){
 	var tamano = encabezado.lenght;
 
-	var content = '<tr> <a href="{{ URL::asset('+enlace+') }}">'
+	var content = ' <a class="lista" href="'+enlace+'"><div class="row">'
 	for(col in encabezado){
-	    content += '<td>' + cliente[encabezado[col]] + '</td>';
+	    content += '<div class="col-md">' + cliente[encabezado[col]] + '</div>';
 	}
-	content += "</a> </tr> "
+	content += "</div> </a>"
 
 	$(donde).append(content);
 }

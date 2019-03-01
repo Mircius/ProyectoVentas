@@ -31,30 +31,24 @@
 		<br>
 	<!-- Tabla clientes -->
 		<div class="row">
-
-			<div class="col-md-1 col-lg-1"></div>
-			
-			<div class="col-md-10 col-lg-10">
-				<table class="table">
-					<thead>
-						<tr>
-							<th>Nombre</th>
-							<th>Email</th>
-							<th>CIF/NIF</th>
-							<th>C.P.</th>
-							<th>Provincia</th>
-							<th>Localidad</th>
-						</tr>
-					</thead>
-					<tbody id="tbodyClientes">
+				<div class="col-md tabla centered">
+					<div class="encabezado">
+						<div class="row">
+							<div class="col-md">Nombre</div>
+							<div class="col-md">Email</div>
+							<div class="col-md">CIF/NIF</div>
+							<div class="col-md">C.P.</div>
+							<div class="col-md">Provincia</div>
+							<div class="col-md">Localidad</div>
+						</div>
+					</div>
+					<hr align="left">
+					<div class="cuerpo" id="tbodyClientes">
 						<!-- Datos clientes -->
-						
-					</tbody>	
+
+					</div>	
 				</table>
 			</div>
-
-			<div class="col-md-1 col-lg-1"></div>
-
 		</div>
 		<br><br>
 
