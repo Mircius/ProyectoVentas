@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Cliente;
+use Exception;
 
 class ClientesControler extends Controller
 {
@@ -19,6 +20,8 @@ class ClientesControler extends Controller
 		return view('nuevoCliente');
 	}
 
+
+
 	public function getShow($id){
 		$cliente = Cliente::find($id);
 
@@ -26,8 +29,10 @@ class ClientesControler extends Controller
 	}
 	
 	//Funcion de guardado de clientes
+
 	public function save(Request $request){
-		$cliente = new Cliente;
+		try{
+			$cliente = new Cliente;
 			$cliente->nombre = $request->input('nombre');
 			$cliente->email = $request->input('email');
 			$cliente->telefono = $request->input('telefono');
@@ -36,11 +41,14 @@ class ClientesControler extends Controller
 			$cliente->provincia = $request->input('provincia');
 			$cliente->localidad = $request->input('localidad');
 			$cliente->codigoPostal = $request->input('cp');
-		$cliente->save();
-
-
-		$clientes = Cliente::select('idClient', 'nombre', 'email', 'cifNif', 'codigoPostal', 'provincia', 'localidad')->get();
+			$cliente->save();
+			$clientes = Cliente::select('idClient', 'nombre', 'email', 'cifNif', 'codigoPostal', 'provincia', 'localidad')->get();
+		}catch(Exception $e){
+			return back()->withErrors(['Error1'=>'Error del servidor']);		
+		}
 		return view('listaClientes', compact('clientes'));
+
 	}
-	
 }
+	
+

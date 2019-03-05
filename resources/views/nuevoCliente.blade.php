@@ -5,6 +5,10 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
 
+	<script type="text/javascript" src="code.js"></script>
+	<script type="text/javascript" src="{{asset('js/componenteErrores.js')}}"></script>
+
+
 	<!-- BOOTSRAP -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -17,9 +21,13 @@
 			@include('navbar')
 			
 		<!-- Componente Errores  -->
+		
 		<div class="row compErrors">
 			@include('errors')
 		</div>
+		
+		
+
 		<!-- Titulo -->
 		<div class="row bg-dark d-flex justify-content-center">
 			<h1 class="bg-dark text-white">Nuevo cliente</h1>
@@ -31,7 +39,7 @@
 			<div class="col-md-1 col-lg-1"></div>
 
 			<div class="col-md-10 col-lg-10">
-				<form method="post" action('ClientesControler@save')>
+				<form method="post" name=form id= form action('ClientesControler@save')>
 
 				 	{{ csrf_field() }}
 				 	<div class="row">
@@ -76,11 +84,13 @@
 					</div>
 					<br>
 					<div class="row">
+
 						<div class="col-md-6">
 							<a type="button" class="btn btn-dark" href="{{ URL::to('/') }}">Cancelar</a>
+
 						</div>
 						<div class="col-md-6 text-right">
-							<button type="submit" class="btn btn-dark">Guardar</button>
+							<button type="submit" class="btn btn-dark" disabled>Guardar</button>
 						</div>
 					</div>
 				</form>
@@ -89,5 +99,10 @@
 			<div class="col-md-1 col-lg-1"></div> 
 		</div>
 	</div>
+	<script type="text/javascript">
+		$(function() {
+			checkForm("#form");
+		});
+	</script>
 </body>
 </html>

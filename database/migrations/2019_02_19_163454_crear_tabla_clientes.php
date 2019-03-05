@@ -15,6 +15,7 @@ class CrearTablaClientes extends Migration
     {
     Schema::dropIfExists('clientes');
 
+
     Schema::create('clientes', function($table){
         $table->increments('idClient');
         $table->string('nombre');
