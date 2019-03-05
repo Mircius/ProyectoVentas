@@ -31,7 +31,7 @@ function checkForm (idForm) {
 			// comprobacion("#email", logicaMail))
 		
 		} else {
-			deshabilitarSubmit(idForm);
+			//deshabilitarSubmit(idForm);
 			}
 		});
 }

@@ -4,7 +4,7 @@ function listaClientes(clientes){
 	var donde = '#tbodyClientes';
 	
 	for (var cliente in clientes) {
-		var enlace = '/cliente/'+clientes[cliente]["idClient"];
+		var enlace = '/cliente/'+clientes[cliente]["id"];
 
 		
 		printLista(encabezado, donde, enlace, clientes[cliente]);

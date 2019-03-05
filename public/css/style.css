@@ -13,6 +13,19 @@
 	padding-bottom: 0px;
 }
 
+/*Form EDIT*/
+label{
+	margin-right: 20px;
+	width: 60px;
+}
+#editar input{
+	width: 400px;
+}
+
+#editarCliente{
+	margin-right: 30px;
+	margin-left: 30px;
+}
 
 /*TABLA CSS*/
 .encabezado{

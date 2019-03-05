@@ -31,23 +31,22 @@
 		<br>
 	<!-- Tabla clientes -->
 		<div class="row">
-				<div class="col-md tabla centered">
-					<div class="encabezado">
-						<div class="row">
-							<div class="col-md">Nombre</div>
-							<div class="col-md">Email</div>
-							<div class="col-md">CIF/NIF</div>
-							<div class="col-md">C.P.</div>
-							<div class="col-md">Provincia</div>
-							<div class="col-md">Localidad</div>
-						</div>
+			<div class="col-md tabla centered">
+				<div class="encabezado">
+					<div class="row">
+						<div class="col-md">Nombre</div>
+						<div class="col-md">Email</div>
+						<div class="col-md">CIF/NIF</div>
+						<div class="col-md">C.P.</div>
+						<div class="col-md">Provincia</div>
+						<div class="col-md">Localidad</div>
 					</div>
-					<hr align="left">
-					<div class="cuerpo" id="tbodyClientes">
-						<!-- Datos clientes -->
+				</div>
+				<hr align="left">
+				<div class="cuerpo" id="tbodyClientes">
+					<!-- Datos clientes -->
 
-					</div>	
-				</table>
+				</div>	
 			</div>
 		</div>
 		<br><br>
@@ -65,9 +64,7 @@
 		var clientes = {!! json_encode($clientes->toArray(), JSON_HEX_TAG) !!};
 		$(document).ready(function() {
 			listaClientes(clientes);
-		});
-		
-		
+		});		
 	</script>
 </body>
 </html>
