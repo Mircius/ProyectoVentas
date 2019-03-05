@@ -5,6 +5,7 @@
 		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
 		<script type="text/javascript" src="{{asset('js/listas.js')}}"></script>
+		<script type="text/javascript" src="{{asset('js/cliente.js')}}"></script>
 
 		<!-- BOOTSRAP -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
@@ -27,6 +28,66 @@
 		<!-- Titulo -->
 			<div class="row bg-dark d-flex justify-content-center">
 				<h1 class="bg-dark text-white">Clientes</h1>
+				<img id="editarCliente" src="{{asset('img/editBlanco.png')}}" height="40" width="50" onclick="#">
 			</div>
+
+			<br>
+			<!-- Cliente -->
+		<div class="row">
+			<div class="col-md-1 col-lg-1"></div>
+
+			<div class="col-md-10 col-lg-10">
+				<form method="post" name="form" id="editar" action('ClientesControler@update')>
+
+				 	{{ csrf_field() }}
+				 	<div class="row">
+						<div class="form-group col-md-6 form-inline">
+							<label for="nombre">Nombre:</label>
+							<input type="text" class="form-control" name="nombre" id="nombre">
+						</div>
+						<div class="form-group col-md-6 form-inline">
+							<label for="email">Email:</label>
+							<input type="text" class="form-control" name="email" id="email">
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-6 form-inline">
+							<label for="telefono">Teléfono:</label>
+							<input type="text" class="form-control" name="telefono" id="telefono">
+						</div>
+						<div class="form-group col-md-6 form-inline">
+							<label for="direccion">Dirección:</label>
+							<input type="text" class="form-control" name="direccion" id="direccion">
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-6 form-inline">
+							<label for="cifNif">CIF/NIF:</label>
+							<input type="text" class="form-control" name="cifNif" id="cifNif">
+						</div>
+						<div class="form-group col-md-6 form-inline">
+							<label for="provincia">Provincia:</label>
+							<input type="text" class="form-control" name="provincia" id="provincia">
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-6 form-inline">
+							<label for="localidad">Localidad:</label>
+							<input type="text" class="form-control" name="localidad" id="localidad">
+						</div>
+						<div class="form-group col-md-6 form-inline">
+							<label for="cp">Código Postal:</label>
+							<input type="text" class="form-control" name="cp" id="cp">
+						</div>
+					</div>
+
+
+	<script>
+		var cliente = {!! json_encode($cliente->toArray(), JSON_HEX_TAG) !!};
+		$(document).ready(function() {
+			console.log(cliente);
+			datosCliente(cliente);
+		});		
+	</script>
 	</body>
 </html>

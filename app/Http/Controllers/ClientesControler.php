@@ -10,8 +10,8 @@ class ClientesControler extends Controller
 {
 	//Vista Principal
     public function getClientes(){
-		$clientes = Cliente::select('idClient', 'nombre', 'email', 'cifNif', 'codigoPostal', 'provincia', 'localidad')->get();
-    	return view("listaClientes", compact('clientes'));
+		$clientes = Cliente::select('id', 'nombre', 'email', 'cifNif', 'codigoPostal', 'provincia', 'localidad')->get();
+    	return view("listaClientes", ['clientes'=>$clientes]);
 	}
 
 	// Formulario de creacion de clientes
@@ -20,16 +20,7 @@ class ClientesControler extends Controller
 		return view('nuevoCliente');
 	}
 
-
-
-	public function getShow($id){
-		$cliente = Cliente::find($id);
-
-		return view('cliente', array('cliente'=>$cliente));
-	}
-	
 	//Funcion de guardado de clientes
-
 	public function save(Request $request){
 		try{
 			$cliente = new Cliente;
@@ -42,13 +33,41 @@ class ClientesControler extends Controller
 			$cliente->localidad = $request->input('localidad');
 			$cliente->codigoPostal = $request->input('cp');
 			$cliente->save();
-			$clientes = Cliente::select('idClient', 'nombre', 'email', 'cifNif', 'codigoPostal', 'provincia', 'localidad')->get();
+			$clientes = Cliente::select('id', 'nombre', 'email', 'cifNif', 'codigoPostal', 'provincia', 'localidad')->get();
 		}catch(Exception $e){
-			return back()->withErrors(['Error1'=>'Error del servidor']);		
+			// return back()->withErrors(['Error1'=>'Error del servidor']);		
 		}
-		return view('listaClientes', compact('clientes'));
+		return view('listaClientes', ['clientes'=>$clientes]);
 
 	}
-}
-	
 
+	//Formulario de edicion de clientes
+	public function edit($id){
+		try{
+			$cliente = Cliente::find($id);
+
+			// return view('cliente', compact('cliente'));
+
+		}catch(Exception $e){
+			//return back()->withErrors(['Error1'=>'Error del servidor']);		
+		}
+
+		return view('cliente', ['cliente'=>$cliente]);
+	}
+
+	//Funcion de actualizacion de clientes
+	public function update(Request $request, $id){
+		$cliente = Cliente::find($id);
+			$cliente->nombre = $request->input('nombre');
+			$cliente->email = $request->input('email');
+			$cliente->telefono = $request->input('telefono');
+			$cliente->direccion = $request->input('direccion');
+			$cliente->cifNif = $request->input('cifNif');
+			$cliente->provincia = $request->input('provincia');
+			$cliente->localidad = $request->input('localidad');
+			$cliente->codigoPostal = $request->input('cp');
+		$cliente->save();
+
+		return view('cliente', ['cliente'=>$cliente]);
+	}
+}

@@ -45,4 +45,3 @@ function checkForm (idForm) {
 		submit();
 	}
 			
-}
