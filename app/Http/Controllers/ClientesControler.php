@@ -34,10 +34,11 @@ class ClientesControler extends Controller
 			$cliente->codigoPostal = $request->input('cp');
 			$cliente->save();
 			$clientes = Cliente::select('id', 'nombre', 'email', 'cifNif', 'codigoPostal', 'provincia', 'localidad')->get();
+			return view('listaClientes', ['clientes'=>$clientes]);
+
 		}catch(Exception $e){
-			// return back()->withErrors(['Error1'=>'Error del servidor']);		
+			return back()->withErrors(['Error1'=>'Error del servidor']);		
 		}
-		return view('listaClientes', ['clientes'=>$clientes]);
 
 	}
 
@@ -46,13 +47,12 @@ class ClientesControler extends Controller
 		try{
 			$cliente = Cliente::find($id);
 
-			// return view('cliente', compact('cliente'));
+			return view('cliente', ['cliente'=>$cliente]);
 
 		}catch(Exception $e){
-			//return back()->withErrors(['Error1'=>'Error del servidor']);		
+			return back()->withErrors(['Error1'=>'Error del servidor']);		
 		}
 
-		return view('cliente', ['cliente'=>$cliente]);
 	}
 
 	//Funcion de actualizacion de clientes

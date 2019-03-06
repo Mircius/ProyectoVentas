@@ -24,6 +24,7 @@
 		<!-- Componente Errores  -->
 		<div class="row compErrors">
 			@include('errors')
+			
 		</div>
 		<!-- Titulo -->
 			<div class="row bg-dark d-flex justify-content-center">

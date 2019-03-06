@@ -99,10 +99,5 @@
 			<div class="col-md-1 col-lg-1"></div> 
 		</div>
 	</div>
-	<script type="text/javascript">
-		// $(function() {
-		// 	checkForm("#form");
-		// });
-	</script>
 </body>
 </html>
