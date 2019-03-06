@@ -11,6 +11,19 @@ function listaClientes(clientes){
 	}
 }
 
+// Logica de la lista Venta
+function listaClientes(venta){
+	var encabezado = [ 'id', 'email', 'cifNif', 'codigoPostal', 'provincia', 'localidad'];
+	var donde = '#tbodyVentas';
+	
+	for (var cliente in clientes) {
+		var enlace = '/cliente/'+clientes[cliente]["id"];
+
+		
+		printLista(encabezado, donde, enlace, clientes[cliente]);
+	}
+}
+
 // Componente print lista
 function printLista(encabezado, donde, enlace, cliente){
 	var tamano = encabezado.lenght;

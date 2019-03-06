@@ -31,15 +31,15 @@ class ClientesControler extends Controller
 			$cliente->cifNif = $request->input('cifNif');
 			$cliente->provincia = $request->input('provincia');
 			$cliente->localidad = $request->input('localidad');
-			$cliente->codigoPostal = $request->input('cp');
+			$cliente->codigoPostal = $request->input('codigoPostal');
 			$cliente->save();
 			$clientes = Cliente::select('id', 'nombre', 'email', 'cifNif', 'codigoPostal', 'provincia', 'localidad')->get();
+
 			return view('listaClientes', ['clientes'=>$clientes]);
 
 		}catch(Exception $e){
 			return back()->withErrors(['Error1'=>'Error del servidor']);		
 		}
-
 	}
 
 	//Formulario de edicion de clientes
@@ -52,22 +52,25 @@ class ClientesControler extends Controller
 		}catch(Exception $e){
 			return back()->withErrors(['Error1'=>'Error del servidor']);		
 		}
-
 	}
 
 	//Funcion de actualizacion de clientes
 	public function update(Request $request, $id){
+		try{
 		$cliente = Cliente::find($id);
 			$cliente->nombre = $request->input('nombre');
 			$cliente->email = $request->input('email');
 			$cliente->telefono = $request->input('telefono');
 			$cliente->direccion = $request->input('direccion');
-			$cliente->cifNif = $request->input('cifNif');
+			// $cliente->cifNif = $request->input('cifNif');
 			$cliente->provincia = $request->input('provincia');
 			$cliente->localidad = $request->input('localidad');
-			$cliente->codigoPostal = $request->input('cp');
+			$cliente->codigoPostal = $request->input('codigoPostal');
 		$cliente->save();
 
 		return view('cliente', ['cliente'=>$cliente]);
+		}catch{
+			return back()->withErrors(['Error1'=>'Error del servidor']);
+		}
 	}
 }
