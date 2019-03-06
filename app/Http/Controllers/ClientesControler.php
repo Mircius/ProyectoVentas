@@ -38,7 +38,7 @@ class ClientesControler extends Controller
 
 			return view('listaClientes', ['clientes'=>$clientes]);
 		}catch(Exception $e){
-			//return back()->withErrors(['Error1'=>'Error del servidor']);		
+			return back()->withErrors(['Error1'=>'Error del servidor']);		
 		}
 	}
 
@@ -51,7 +51,7 @@ class ClientesControler extends Controller
 			return view('cliente', ['cliente'=>$cliente], ['ventas'=>$ventas]);
 
 		}catch(Exception $e){
-			//return back()->withErrors(['Error1'=>'Error del servidor']);		
+			return back()->withErrors(['Error1'=>'Error del servidor']);		
 		}
 
 		
@@ -73,7 +73,7 @@ class ClientesControler extends Controller
 
 		return view('cliente', ['cliente'=>$cliente]);
 		}catch(Exception $e){
-			//return back()->withErrors(['Error1'=>'Error del servidor']);
+			return back()->withErrors(['Error1'=>'Error del servidor']);
 		}
 	}
 }
