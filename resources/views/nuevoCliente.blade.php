@@ -5,7 +5,6 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
 
-	<script type="text/javascript" src="code.js"></script>
 	<script type="text/javascript" src="{{asset('js/componenteErrores.js')}}"></script>
 
 
@@ -90,7 +89,8 @@
 
 						</div>
 						<div class="col-md-6 text-right">
-							<button type="submit" class="btn btn-dark">Guardar</button>
+							<button  id="submit" class="btn btn-dark" >Guardar</button>
+
 						</div>
 					</div>
 				</form>
@@ -100,9 +100,9 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-		$(function() {
-			checkForm("#form");
-		});
+		// $(function() {
+		// 	checkForm("#form");
+		// });
 	</script>
 </body>
 </html>
