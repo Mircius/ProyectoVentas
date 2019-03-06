@@ -12,4 +12,8 @@
 			</ol>	
 		</div>
 </div>
+<script type="text/javascript">
+	$("div.mostrarErroresJs").hide();
+
+</script>
 <div class="col-md-1 col-lg-1"></div>
