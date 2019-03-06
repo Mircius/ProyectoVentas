@@ -12,15 +12,15 @@ function listaClientes(clientes){
 }
 
 // Logica de la lista Venta
-function listaClientes(venta){
-	var encabezado = [ 'id', 'email', 'cifNif', 'codigoPostal', 'provincia', 'localidad'];
+function listaVentas(ventas){
+	var encabezado = [ 'id', 'created_at', 'updated_at'];
 	var donde = '#tbodyVentas';
 	
-	for (var cliente in clientes) {
-		var enlace = '/cliente/'+clientes[cliente]["id"];
+	for (var venta in ventas) {
+		var enlace = '#';
 
 		
-		printLista(encabezado, donde, enlace, clientes[cliente]);
+		printLista(encabezado, donde, enlace, ventas[venta]);
 	}
 }
 

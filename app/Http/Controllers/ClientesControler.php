@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Cliente;
+use App\Venta;
 use Exception;
 
 class ClientesControler extends Controller
@@ -37,7 +38,7 @@ class ClientesControler extends Controller
 
 			return view('listaClientes', ['clientes'=>$clientes]);
 		}catch(Exception $e){
-			return back()->withErrors(['Error1'=>'Error del servidor']);		
+			//return back()->withErrors(['Error1'=>'Error del servidor']);		
 		}
 	}
 
@@ -45,11 +46,12 @@ class ClientesControler extends Controller
 	public function edit($id){
 		try{
 			$cliente = Cliente::find($id);
+			$ventas = Venta::where('idCliente', $id)->get();
 
-			return view('cliente', ['cliente'=>$cliente]);
+			return view('cliente', ['cliente'=>$cliente], ['ventas'=>$ventas]);
 
 		}catch(Exception $e){
-			return back()->withErrors(['Error1'=>'Error del servidor']);		
+			//return back()->withErrors(['Error1'=>'Error del servidor']);		
 		}
 
 		
@@ -70,8 +72,8 @@ class ClientesControler extends Controller
 		$cliente->save();
 
 		return view('cliente', ['cliente'=>$cliente]);
-		}catch{
-			return back()->withErrors(['Error1'=>'Error del servidor']);
+		}catch(Exception $e){
+			//return back()->withErrors(['Error1'=>'Error del servidor']);
 		}
 	}
 }
