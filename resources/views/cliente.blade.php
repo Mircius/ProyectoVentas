@@ -27,8 +27,21 @@
 		</div>
 		<!-- Titulo -->
 			<div class="row bg-dark d-flex justify-content-center">
-				<h1 class="bg-dark text-white">Clientes</h1>
-				<img id="editarCliente" src="{{asset('img/editBlanco.png')}}" height="40" width="50" onclick="#">
+				<h1 class="bg-dark text-white">Cliente</h1>
+
+				<div id="editarGuardar">
+					<!-- ICONO EDITAR /ICONO GUARDAR -->
+					<img id="editarCliente" src="{{asset('img/editBlanco.png')}}" height="45" width="55" onclick="editar()">
+
+					<!-- VARIARA ENTRE LAS 2 SIGUIENTES IMAGENES -->
+					<!-- <img id="editarCliente" src="{{asset('img/editBlanco.png')}}" height="45" width="55" onclick="editar()"> -->
+					<!-- <img id="guardarCliente" src="{{asset('img/okBlanco.png')}}" height="45" width="45" onclick="guardar()"> -->
+				</div>
+				
+			</div>
+			<br>
+			<div class="atras">
+				 <a type="button" class="btn btn-dark float-right" href="{{ URL::to('/') }}"> Atrás </a>
 			</div>
 
 			<br>
@@ -42,42 +55,61 @@
 				 	{{ csrf_field() }}
 				 	<div class="row">
 						<div class="form-group col-md-6 form-inline">
-							<label for="nombre">Nombre:</label>
-							<input type="text" class="form-control" name="nombre" id="nombre">
+							<label class="labelCliente" for="nombre">Nombre:</label>
+							<input type="text" class="form-control editable" name="nombre" id="nombre" disabled>
 						</div>
 						<div class="form-group col-md-6 form-inline">
-							<label for="email">Email:</label>
-							<input type="text" class="form-control" name="email" id="email">
-						</div>
-					</div>
-					<div class="row">
-						<div class="form-group col-md-6 form-inline">
-							<label for="telefono">Teléfono:</label>
-							<input type="text" class="form-control" name="telefono" id="telefono">
-						</div>
-						<div class="form-group col-md-6 form-inline">
-							<label for="direccion">Dirección:</label>
-							<input type="text" class="form-control" name="direccion" id="direccion">
+							<label class="labelCliente" for="email">Email:</label>
+							<input type="text" class="form-control editable" name="email" id="email" disabled>
 						</div>
 					</div>
 					<div class="row">
 						<div class="form-group col-md-6 form-inline">
-							<label for="cifNif">CIF/NIF:</label>
-							<input type="text" class="form-control" name="cifNif" id="cifNif">
+							<label class="labelCliente" for="telefono">Teléfono:</label>
+							<input type="text" class="form-control editable" name="telefono" id="telefono" disabled>
 						</div>
 						<div class="form-group col-md-6 form-inline">
-							<label for="provincia">Provincia:</label>
-							<input type="text" class="form-control" name="provincia" id="provincia">
+							<label class="labelCliente" for="direccion">Dirección:</label>
+							<input type="text" class="form-control editable" name="direccion" id="direccion" disabled>
 						</div>
 					</div>
 					<div class="row">
 						<div class="form-group col-md-6 form-inline">
-							<label for="localidad">Localidad:</label>
-							<input type="text" class="form-control" name="localidad" id="localidad">
+							<label class="labelCliente" for="cifNif">CIF/NIF:</label>
+							<input type="text" class="form-control" name="cifNif" id="cifNif" disabled>
 						</div>
 						<div class="form-group col-md-6 form-inline">
-							<label for="cp">Código Postal:</label>
-							<input type="text" class="form-control" name="cp" id="cp">
+							<label class="labelCliente" for="provincia">Provincia:</label>
+							<input type="text" class="form-control editable" name="provincia" id="provincia" disabled>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-6 form-inline">
+							<label class="labelCliente" for="localidad">Localidad:</label>
+							<input type="text" class="form-control editable" name="localidad" id="localidad" disabled>
+						</div>
+						<div class="form-group col-md-6 form-inline">
+							<label class="labelCliente" for="codigoPostal">Código Postal:</label>
+							<input type="text" class="form-control editable" name="codigoPostal" id="codigoPostal" disabled>
+						</div>
+					</div>
+					<br><br>
+
+				<!-- Tabla ventas -->
+					<div class="row">
+						<div class="col-md tabla centered">
+							<div class="encabezado">
+								<div class="row">
+									<div class="col-md">Id</div>
+									<div class="col-md">Fecha de creación</div>
+									<div class="col-md">Fecha última modificación</div>
+								</div>
+							</div>
+							<hr align="left">
+							<div class="cuerpo" id="tbodyVentas">
+								<!-- Datos clientes -->
+
+							</div>	
 						</div>
 					</div>
 
@@ -85,7 +117,6 @@
 	<script>
 		var cliente = {!! json_encode($cliente->toArray(), JSON_HEX_TAG) !!};
 		$(document).ready(function() {
-			console.log(cliente);
 			datosCliente(cliente);
 		});		
 	</script>
