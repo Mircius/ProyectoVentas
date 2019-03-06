@@ -3,11 +3,13 @@
 
 <div class="col-md-1 col-lg-1"></div>
 <div class="col-md-10 col-lg-10">
-	<!-- <p class="alert alert-danger">Error:</p> -->
-	<!-- <p class="alert alert-danger">Error: {{ session('error') }}</p> -->
 	@if (session('errors'))
 		<div class="alert alert-danger">{{session('errors')->first('Error1')}}</div>
 	@endif
-  
+		<div class="alert alert-danger mostrarErroresJs">
+			<ol class="mostrarErroresJs">
+				
+			</ol>	
+		</div>
 </div>
 <div class="col-md-1 col-lg-1"></div>

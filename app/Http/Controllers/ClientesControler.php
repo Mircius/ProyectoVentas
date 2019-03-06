@@ -37,6 +37,7 @@ class ClientesControler extends Controller
 			$clientes = Cliente::select('id', 'nombre', 'email', 'cifNif', 'codigoPostal', 'provincia', 'localidad')->get();
 
 			return view('listaClientes', ['clientes'=>$clientes]);
+
 		}catch(Exception $e){
 			return back()->withErrors(['Error1'=>'Error del servidor']);		
 		}
@@ -53,8 +54,6 @@ class ClientesControler extends Controller
 		}catch(Exception $e){
 			return back()->withErrors(['Error1'=>'Error del servidor']);		
 		}
-
-		
 	}
 
 	//Funcion de actualizacion de clientes
