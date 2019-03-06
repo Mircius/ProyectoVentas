@@ -117,8 +117,10 @@
 
 	<script>
 		var cliente = {!! json_encode($cliente->toArray(), JSON_HEX_TAG) !!};
+		var ventas = {!! json_encode($ventas->toArray(), JSON_HEX_TAG) !!};
 		$(document).ready(function() {
 			datosCliente(cliente);
+			listaVentas(ventas);
 		});		
 	</script>
 	</body>
