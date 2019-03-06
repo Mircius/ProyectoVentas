@@ -42,7 +42,7 @@ function checkForm (idForm) {
 	comprobacion("#email", logicaMail, idForm);
 	comprobacion("#direccion", logicaVacio, idForm);
 	comprobacion("#cifNif", logicaVacio, idForm);
-	comprobacion("#cp", logicaVacio, idForm);
+	comprobacion("#codigoPostal", logicaVacio, idForm);
 	//Acordarte de limpiar el array.
 	
 	if(contadorErrores === 0){
@@ -90,7 +90,7 @@ function construirErroresMensaje(array){
   		if (value == "cifNif"){
   			mensajesError.push("El campo CIF/NIF no puede estar vacio.");
   		}
-  		if (value == "cp"){
+  		if (value == "codigoPostal"){
   			mensajesError.push("El campo codigo postal no puede estar vacio.");
   		}
 	});

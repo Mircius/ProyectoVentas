@@ -77,8 +77,8 @@
 							<input type="text" class="form-control" name="localidad" id="localidad">
 						</div>
 						<div class="form-group col-md-6">
-							<label for="cp">Código Postal:</label>
-							<input type="text" class="form-control" name="cp" id="cp">
+							<label for="codigoPostal">Código Postal:</label>
+							<input type="text" class="form-control" name="codigoPostal" id="codigoPostal">
 						</div>
 					</div>
 					<br>
