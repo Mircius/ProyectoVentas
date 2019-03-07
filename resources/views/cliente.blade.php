@@ -94,8 +94,15 @@
 							<input type="text" class="form-control editable" name="codigoPostal" id="codigoPostal" disabled>
 						</div>
 					</div>
-					<br><br>
+					<br>
 
+				<!-- Boton nueva Venta -->
+				<!-- {{ URL::to('/cliente/$id/nuevaVenta') }} -->
+				<div class="row">
+					<div class="col-md">
+						<a type="button" class="btn float-right" href="#" hidden><img src="{{asset('img/agregar.png')}}" height="50" width="50"></a>
+					</div>
+				</div>
 				<!-- Tabla ventas -->
 					<div class="row">
 						<div class="col-md tabla centered">

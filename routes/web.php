@@ -20,3 +20,6 @@ Route::post('/create', 'ClientesControler@save');
 //ACTUALIZAR CLIENTES
 Route::get('/cliente/{id}', 'ClientesControler@edit');
 Route::post('/cliente/{id}', 'ClientesControler@update');
+
+//NUEVA VENTA
+Route::get('/cliente/{id}/nuevaVenta', 'ClientesControler@newSale');

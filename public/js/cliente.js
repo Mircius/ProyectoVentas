@@ -15,7 +15,7 @@ function datosCliente(cliente){
 function editar(){
 	$('.editable').removeAttr('disabled');
 	$('#editarCliente').remove();
-	$('#editarGuardar').append('<button type="submit" class="guardarCliente" form="editar"><img class="guardarCliente" src="/img/okBlanco.png" height="45" width="45" onclick="guardar()"></button>');
+	$('#editarGuardar').append('<button type="submit" id="guardarCliente" form="editar"><img id="btnGuardarCliente" src="/img/okBlanco.png" height="45" width="45" onclick="guardar()"></button>');
 }
 
 //Deshabilita los campos

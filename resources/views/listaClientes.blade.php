@@ -28,7 +28,15 @@
 		<div class="row bg-dark d-flex justify-content-center">
 			<h1 class="bg-dark text-white">Clientes</h1>
 		</div>
+
 		<br>
+		<!-- Boton nuevos clientes -->
+		<div class="row">
+			<div class="col-md">
+				<a type="button" class="btn float-right" href="{{ URL::to('/create') }}"><img src="{{asset('img/agregar.png')}}" height="50" width="50"></a>
+			</div>
+		</div>
+
 	<!-- Tabla clientes -->
 		<div class="row">
 			<div class="col-md tabla centered">
@@ -51,14 +59,7 @@
 		</div>
 		<br><br>
 
-	<!-- Boton nuevos clientes -->
-		<div class="row">
-			<div class="col-md-1 col-lg-1"></div>
-				<div class="col-md-2 col-lg-2">
-					<a type="button" class="btn btn-dark" href="{{ URL::to('/create') }}">Añadir Cliente</a>
-				</div>
-		</div>
-	</div>
+	
 
 	<script>
 		var clientes = {!! json_encode($clientes->toArray(), JSON_HEX_TAG) !!};

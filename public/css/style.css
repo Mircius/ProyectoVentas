@@ -1,5 +1,5 @@
 .compErrors{
-	height: 45px;
+	/*height: 45px;*/
 	margin: 10px;
 	font-size: 16px;
 }
@@ -26,11 +26,15 @@
 	width: 55px;
 }
 
-button .guardarCliente, .guardarCliente:active, .guardarCliente:hover, .guardarCliente:focus {
+#btnGuardarCliente{
+	/**/
+}
+
+#guardarCliente, #guardarCliente:active, #guardarCliente:hover, #guardarCliente:focus, #guardarCliente:link{
 	width: 55px;
-	margin-top: 5px
 	margin-right: 30px;
 	margin-left: 30px;
+	margin-top: 5px;
 	padding: 0;
 	border: none;
 	font: inherit;

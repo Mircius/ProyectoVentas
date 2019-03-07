@@ -25,14 +25,14 @@ class ClientesControler extends Controller
 	public function save(Request $request){
 		try{
 			$cliente = new Cliente;
-			$cliente->nombre = $request->input('nombre');
-			$cliente->email = $request->input('email');
-			$cliente->telefono = $request->input('telefono');
-			$cliente->direccion = $request->input('direccion');
-			$cliente->cifNif = $request->input('cifNif');
-			$cliente->provincia = $request->input('provincia');
-			$cliente->localidad = $request->input('localidad');
-			$cliente->codigoPostal = $request->input('codigoPostal');
+				$cliente->nombre = $request->input('nombre');
+				$cliente->email = $request->input('email');
+				$cliente->telefono = $request->input('telefono');
+				$cliente->direccion = $request->input('direccion');
+				$cliente->cifNif = $request->input('cifNif');
+				$cliente->provincia = $request->input('provincia');
+				$cliente->localidad = $request->input('localidad');
+				$cliente->codigoPostal = $request->input('codigoPostal');
 			$cliente->save();
 			$clientes = Cliente::select('id', 'nombre', 'email', 'cifNif', 'codigoPostal', 'provincia', 'localidad')->get();
 
@@ -69,9 +69,29 @@ class ClientesControler extends Controller
 			$cliente->codigoPostal = $request->input('codigoPostal');
 		$cliente->save();
 
-		return view('cliente', ['cliente'=>$cliente]);
+		$ventas = Venta::where('idCliente', $id)->get();
+
+		return view('cliente', ['cliente'=>$cliente], ['ventas'=>$ventas]);
 		}catch(Exception $e){
 			return back()->withErrors(['Error1'=>'Error del servidor']);
 		}
+	}
+
+
+	public function newSale($idCliente){
+		try{
+			$newSale = new Venta;
+				$newSale->nombre = $ididCliente;
+			$newSale->save();
+
+			$cliente = Cliente::find($id);
+			$ventas = Venta::where('idCliente', $id)->get();
+
+			return view('cliente', ['cliente'=>$cliente], ['ventas'=>$ventas]);
+
+		}catch(Exception $e){
+			return back()->withErrors(['Error1'=>'Error del servidor']);		
+		}
+
 	}
 }
