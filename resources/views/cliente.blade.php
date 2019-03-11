@@ -98,9 +98,10 @@
 
 				<!-- Boton nueva Venta -->
 				<!-- {{ URL::to('/cliente/$id/nuevaVenta') }} -->
+
 				<div class="row">
-					<div class="col-md">
-						<a type="button" class="btn float-right" href="#" hidden><img src="{{asset('img/agregar.png')}}" height="50" width="50"></a>
+					<div class="col-md agregarVenta">
+						
 					</div>
 				</div>
 				<!-- Tabla ventas -->
@@ -125,9 +126,11 @@
 	<script>
 		var cliente = {!! json_encode($cliente->toArray(), JSON_HEX_TAG) !!};
 		var ventas = {!! json_encode($ventas->toArray(), JSON_HEX_TAG) !!};
+
 		$(document).ready(function() {
 			datosCliente(cliente);
 			listaVentas(ventas);
+			enlace(cliente);
 		});		
 	</script>
 	</body>

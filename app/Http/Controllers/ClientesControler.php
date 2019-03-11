@@ -58,40 +58,45 @@ class ClientesControler extends Controller
 	//Funcion de actualizacion de clientes
 	public function update(Request $request, $id){
 		try{
-		$cliente = Cliente::find($id);
-			$cliente->nombre = $request->input('nombre');
-			$cliente->email = $request->input('email');
-			$cliente->telefono = $request->input('telefono');
-			$cliente->direccion = $request->input('direccion');
-			// $cliente->cifNif = $request->input('cifNif');
-			$cliente->provincia = $request->input('provincia');
-			$cliente->localidad = $request->input('localidad');
-			$cliente->codigoPostal = $request->input('codigoPostal');
-		$cliente->save();
+			$cliente = Cliente::find($id);
+				$cliente->nombre = $request->input('nombre');
+				$cliente->email = $request->input('email');
+				$cliente->telefono = $request->input('telefono');
+				$cliente->direccion = $request->input('direccion');
+				// $cliente->cifNif = $request->input('cifNif');
+				$cliente->provincia = $request->input('provincia');
+				$cliente->localidad = $request->input('localidad');
+				$cliente->codigoPostal = $request->input('codigoPostal');
+			$cliente->save();
 
-		$ventas = Venta::where('idCliente', $id)->get();
+			$ventas = Venta::where('idCliente', $id)->get();
 
-		return view('cliente', ['cliente'=>$cliente], ['ventas'=>$ventas]);
+			return view('cliente', ['cliente'=>$cliente], ['ventas'=>$ventas]);
 		}catch(Exception $e){
 			return back()->withErrors(['Error1'=>'Error del servidor']);
 		}
 	}
 
-
-	public function newSale($idCliente){
+	//Funcion de creacion de nueva venta
+	public function newSale($id){
 		try{
-			$newSale = new Venta;
-				$newSale->nombre = $ididCliente;
-			$newSale->save();
+			$nuevaVenta = new Venta;
+				$nuevaVenta->idCliente = $id;
+			$nuevaVenta->save();
 
 			$cliente = Cliente::find($id);
 			$ventas = Venta::where('idCliente', $id)->get();
 
 			return view('cliente', ['cliente'=>$cliente], ['ventas'=>$ventas]);
-
 		}catch(Exception $e){
 			return back()->withErrors(['Error1'=>'Error del servidor']);		
 		}
 
+	}
+
+	 public function getVenta($id){
+	 	$cliente = Cliente::find($id);
+
+    	return view("venta", ['cliente'=>$cliente]);
 	}
 }

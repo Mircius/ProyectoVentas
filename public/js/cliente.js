@@ -11,6 +11,15 @@ function datosCliente(cliente){
 	}
 }
 
+function enlace(cliente){
+	var id = cliente['id'];
+	var enlace = '/cliente/nuevaVenta/'+id;
+
+	var boton = '<a type="button" class="btn float-right" href="'+enlace+'"><img src="/img/agregar.png" height="50" width="50"></a>'
+
+	$('.agregarVenta').append(boton);
+}
+
 //Habilita los campos para poder editar el cliente
 function editar(){
 	$('.editable').removeAttr('disabled');

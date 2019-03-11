@@ -85,3 +85,48 @@ hr{
 	margin-left: 0;
 	margin-right: 0;
 }
+
+
+/*DETALLE VENTA*/
+
+.blan{
+	background: #F0F0F0;
+	border: solid 1px;
+	border-color: #ADADAD;
+	padding: 10px;
+	margin-left: 50px;
+	margin-right: 50px;
+}
+
+.encabezado{
+	font-size: 20px;
+	font-style: bold;
+}
+
+.agregar{
+	width: 30px;
+	height: 30px;
+
+	margin-left: 30px;
+}
+h4{
+	width: 130px;
+	margin-left: 50px;
+}
+
+.editar, .descarga{
+	width: 30px;
+	height: 30px;
+}
+.ver{
+	width: 50px;
+	height: 30px;
+}
+
+.cuerpo .row{
+	margin-bottom: 10px;
+}
+
+.desplegable{
+	align-content: right;
+}

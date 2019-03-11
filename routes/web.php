@@ -22,4 +22,7 @@ Route::get('/cliente/{id}', 'ClientesControler@edit');
 Route::post('/cliente/{id}', 'ClientesControler@update');
 
 //NUEVA VENTA
-Route::get('/cliente/{id}/nuevaVenta', 'ClientesControler@newSale');
+Route::get('/cliente/nuevaVenta/{id}', 'ClientesControler@newSale');
+
+//VENTA POR CLIENTE
+Route::get('/cliente/venta/{id}', 'ClientesControler@getVenta');
