@@ -8,6 +8,11 @@ var names = [];
 var mensajesError = [];
 // var logicaCodigoPostal = "^[0-9]{5}$";
 // var logicaNIFCIF = 
+String.prototype.isNif=function()
+{
+   return /^(\d{7,8})([A-HJ-NP-TV-Z])$/.test(this) && ("TRWAGMYFPDXBNJZSQVHLCKE"[(RegExp.$1%23)]==RegExp.$2);
+};
+
 
 window.onload=function(){
 	onClick("form");
@@ -24,15 +29,25 @@ function eliminarBorderError(idForm, idInput){
         $(idForm+ " " + idInput).removeClass("border border-danger errores");
 	}
 function comprobacion(idInput, logica, idForm) {
-	if( $(idInput).val().match(logica)){
-		eliminarBorderError(idForm, idInput);
-		return true;
-	}else{
-		añadirBorderError(idForm, idInput);
-		contadorErrores++;
-		return false;
-	}
+		if( $(idInput).val().match(logica)){
+			eliminarBorderError(idForm, idInput);
+			return true;
+		}else{
+			añadirBorderError(idForm, idInput);
+			contadorErrores++;
+			return false;
+		}
 }
+function dniNifComprobacion(idInput,idForm){
+		if($(idInput).val().isNif()){
+			eliminarBorderError(idForm, idInput);
+			return true;
+		}else{
+			añadirBorderError(idForm, idInput);
+			contadorErrores++;
+			return false;
+		}
+	}
 function checkForm (idForm) {
 	contadorErrores = 0;
 	comprobacion("#nombre", logicaNombreProvinciaLocalidad, idForm);
@@ -41,10 +56,9 @@ function checkForm (idForm) {
 	comprobacion("#telefono", logicaTelefono, idForm);
 	comprobacion("#email", logicaMail, idForm);
 	comprobacion("#direccion", logicaVacio, idForm);
-	comprobacion("#cifNif", logicaVacio, idForm);
+	dniNifComprobacion("#cifNif", idForm);
 	comprobacion("#codigoPostal", logicaVacio, idForm);
-	//Acordarte de limpiar el array.
-	
+
 	if(contadorErrores === 0){
 		submit();
 		
@@ -88,7 +102,7 @@ function construirErroresMensaje(array){
   			mensajesError.push("El campo direccion no puede estar vacio.");
   		}
   		if (value == "cifNif"){
-  			mensajesError.push("El campo CIF/NIF no puede estar vacio.");
+  			mensajesError.push("El campo CIF/NIF no es correcto. Revise que lo has escrito correctamente.");
   		}
   		if (value == "codigoPostal"){
   			mensajesError.push("El campo codigo postal no puede estar vacio.");
