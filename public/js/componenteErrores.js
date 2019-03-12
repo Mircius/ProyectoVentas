@@ -8,6 +8,7 @@ var names = [];
 var mensajesError = [];
 // var logicaCodigoPostal = "^[0-9]{5}$";
 // var logicaNIFCIF = 
+//Pagina Comprobacion https://www.letranif.com/
 String.prototype.isNif=function()
 {
    return /^(\d{7,8})([A-HJ-NP-TV-Z])$/.test(this) && ("TRWAGMYFPDXBNJZSQVHLCKE"[(RegExp.$1%23)]==RegExp.$2);
@@ -48,6 +49,29 @@ function dniNifComprobacion(idInput,idForm){
 			return false;
 		}
 	}
+function checkFormModificarClientes (idForm){
+	contadorErrores = 0;
+	comprobacion("#nombre", logicaNombreProvinciaLocalidad, idForm);
+	comprobacion("#provincia", logicaNombreProvinciaLocalidad, idForm); 
+	comprobacion("#localidad", logicaNombreProvinciaLocalidad, idForm);
+	comprobacion("#telefono", logicaTelefono, idForm);
+	comprobacion("#email", logicaMail, idForm);
+	comprobacion("#direccion", logicaVacio, idForm);
+	comprobacion("#codigoPostal", logicaVacio, idForm);
+
+	if(contadorErrores === 0){
+		componenteMostrarError(mensajesError);
+		$("div.mostrarErroresJs").hide();
+		return true;
+	}else{
+		recogerErrores();
+		construirErroresMensaje(names);
+		componenteMostrarError(mensajesError);
+		names.length=0;
+		mensajesError.length=0;
+		return false;
+	}
+}
 function checkForm (idForm) {
 	contadorErrores = 0;
 	comprobacion("#nombre", logicaNombreProvinciaLocalidad, idForm);
@@ -111,7 +135,7 @@ function construirErroresMensaje(array){
 }
 function componenteMostrarError(arrayDeStrings){
 	$("ol.mostrarErroresJs").empty();
-	$.each(mensajesError, function( index, value ) {
+	$.each(arrayDeStrings, function( index, value ) {
 		$("ol.mostrarErroresJs").append("<li>"+value+"</li>");
 		$("div.mostrarErroresJs").show();
 	});

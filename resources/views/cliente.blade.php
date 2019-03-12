@@ -6,6 +6,9 @@
 		<link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
 		<script type="text/javascript" src="{{asset('js/listas.js')}}"></script>
 		<script type="text/javascript" src="{{asset('js/cliente.js')}}"></script>
+		<script type="text/javascript" src="{{asset('js/componenteErrores.js')}}"></script>
+
+
 
 		<!-- BOOTSRAP -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">

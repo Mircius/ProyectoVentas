@@ -24,14 +24,19 @@ function enlace(cliente){
 function editar(){
 	$('.editable').removeAttr('disabled');
 	$('#editarCliente').remove();
-	$('#editarGuardar').append('<button type="submit" id="guardarCliente" form="editar"><img id="btnGuardarCliente" src="/img/okBlanco.png" height="45" width="45" onclick="guardar()"></button>');
+	$('#editarGuardar').append('<img id="btnGuardarCliente" src="/img/okBlanco.png" height="45" width="45" onclick="guardar()">');
 }
 
 //Deshabilita los campos
 function guardar(){
-	$('.editable').attr('disabled', 'true');
-	$('.guardarCliente').remove();
-	$('#editarGuardar').append('<img id="editarCliente" src="/img/editBlanco.png" height="45" width="55" onclick="editar()">');
+	//Cambiar Funcion, para que sea un check checkForm("#editar");
+	if(checkFormModificarClientes ("#editar")){
+		$('.editable').attr('disabled', 'true');
+		$('#btnGuardarCliente').remove();
+		$('#editarGuardar').append('<img id="editarCliente" src="/img/editBlanco.png" height="45" width="55" onclick="editar()">');
+
+
+	}
 }
 
 // <img id="editarCliente" src="{{asset('img/editBlanco.png')}}" height="45" width="55" onclick="editar()">
