@@ -65,14 +65,14 @@
 
 			<div class="row">
 			<h4>Facturas</h4> 
-			<img src="{{asset('img/agregar.png')}}" class="agregar" alt="agregar archivo de tipo factura">
+			<img src="{{asset('img/agregar.png')}}" class="agregar" id="agregarFac" data-toggle="modal" data-target="#agrearDoc">
 		</div>
 			<div class="tabla blan desplegaFac">
 				<div class="encabezado">
 					<div class="row">
 						<div class="col-lg-2">Nombre</div>
-						<div class="col-lg-2">Fecha modificación</div>
 						<div class="col-lg-2">Estado</div>
+						<div class="col-lg-2">Fecha modificación</div>
 						<div class="col-lg-2"></div>
 						<div class="col-lg-2"></div>
 						<div class="col-lg-2"></div>
@@ -90,14 +90,14 @@
 		<br>
 		<div class="row">
 			<h4>Albaran</h4>
-			<img src="{{asset('img/agregar.png')}}" class="agregar">
+			<img src="{{asset('img/agregar.png')}}" class="agregar" id="agregarAlb">
 		</div>
 		<div class="tabla blan desplegaAl">
 			<div class="encabezado">
 				<div class="row">
 					<div class="col-lg-2">Nombre</div>
-					<div class="col-lg-2">Fecha modificación</div>
 					<div class="col-lg-2">Estado</div>
+					<div class="col-lg-2">Fecha modificación</div>
 					<div class="col-lg-2"></div>
 					<div class="col-lg-2"></div>
 					<div class="col-lg-2"></div>
@@ -115,14 +115,14 @@
 		<br>
 		<div class="row">
 			<h4>Tipo3</h4>
-			<img src="{{asset('img/agregar.png')}}" class="agregar">
+			<img src="{{asset('img/agregar.png')}}" class="agregar" id="agregarT3">
 		</div>
 		<div class="tabla blan desplegaT3">
 				<div class="encabezado">
 					<div class="row">
 						<div class="col-lg-2">Nombre</div>
-						<div class="col-lg-2">Fecha modificación</div>
 						<div class="col-lg-2">Estado</div>
+						<div class="col-lg-2">Fecha modificación</div>
 						<div class="col-lg-2"></div>
 						<div class="col-lg-2"></div>
 						<div class="col-lg-2"></div>
@@ -141,14 +141,14 @@
 		<br>
 		<div class="row">
 			<h4>Tipo4</h4>
-			<img src="{{asset('img/agregar.png')}}" class="agregar">
+			<img src="{{asset('img/agregar.png')}}" class="agregar" id="agregarT4">
 		</div>
 		<div class="tabla blan desplegaT4">
 				<div class="encabezado">
 					<div class="row">
 						<div class="col-lg-2">Nombre</div>
-						<div class="col-lg-2">Fecha modificación</div>
 						<div class="col-lg-2">Estado</div>
+						<div class="col-lg-2">Fecha modificación</div>
 						<div class="col-lg-2"></div>
 						<div class="col-lg-2"></div>
 						<div class="col-lg-2"></div>
@@ -166,14 +166,14 @@
 		<br>
 		<div class="row">
 			<h4>Presupuestos</h4>
-			<img src="{{asset('img/agregar.png')}}" class="agregar">
+			<img src="{{asset('img/agregar.png')}}" class="agregar" id="agregarPres">
 		</div>	
 		<div class="tabla blan despPre">
 				<div class="encabezado">
 					<div class="row">
 						<div class="col-lg-2">Nombre</div>
-						<div class="col-lg-2">Fecha modificación</div>
 						<div class="col-lg-2">Estado</div>
+						<div class="col-lg-2">Fecha modificación</div>
 						<div class="col-lg-2"></div>
 						<div class="col-lg-2"></div>
 						<div class="col-lg-2"></div>
@@ -189,9 +189,19 @@
 	<script>
 		var venta = {!! json_encode($venta->toArray(), JSON_HEX_TAG) !!};
 
+		var facturas = {!! json_encode($facturas->toArray(), JSON_HEX_TAG) !!};
+		
+
 		$(document).ready(function() {
 			datosVenta(venta);
+
+			detalleFacturas(facturas);
+			// detalleAlbaran(albaranes);
+			// detalleTipo3(tipo3);
+			// detalleTipo4(tipo4);
+			// detallePresupuesto(presupuestos);
 		});				
 	</script>
 </body>
 </html>
+

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Cliente;
 use App\Venta;
+use App\Archivo;
 use Exception;
 
 class ClientesControler extends Controller
@@ -95,8 +96,22 @@ class ClientesControler extends Controller
 	}
 
 	 public function getVenta($id){
-	 	$cliente = Cliente::find($id);
+	 	$venta = Venta::find($id);
 
-    	return view("venta", ['cliente'=>$cliente]);
+	 	$matchFactura = ['idVenta' => $id, 'tipo' => 'factura'];
+	 	$matchAlbaran = ['idVenta' => $id, 'tipo' => 'albaran'];
+	 	$matchTipo3 = ['idVenta' => $id, 'tipo' => 'tipo3'];
+	 	$matchTipo4 = ['idVenta' => $id, 'tipo' => 'tipo4'];
+	 	$matchPresupuesto = ['idVenta' => $id, 'tipo' => 'presupuesto'];
+
+	 	$facturas = Archivo::where($matchFactura)->get();
+	 	$albaranes = Archivo::where($matchAlbaran)->get();
+	 	// echo $facturas;
+	 	// echo $albaranes;
+	 	$tipo3 = Archivo::where($matchTipo3)->get();
+	 	$tipo4 = Archivo::where($matchTipo4)->get();
+	 	$presupuestos = Archivo::where($matchPresupuesto)->get();
+
+    	return view("venta", ['venta'=>$venta], ['facturas'=>$facturas], ['albaranes'=>$albaranes], ['tipo3'=>$tipo3], ['tipo4'=>$tipo4], ['presupuestos'=>$presupuestos]);
 	}
 }
