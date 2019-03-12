@@ -190,13 +190,15 @@
 		var venta = {!! json_encode($venta->toArray(), JSON_HEX_TAG) !!};
 
 		var facturas = {!! json_encode($facturas->toArray(), JSON_HEX_TAG) !!};
+		var albaranes = {!! json_encode($albaranes->toArray(), JSON_HEX_TAG) !!};
+
 		
 
 		$(document).ready(function() {
 			datosVenta(venta);
 
 			detalleFacturas(facturas);
-			// detalleAlbaran(albaranes);
+			detalleAlbaran(albaranes);
 			// detalleTipo3(tipo3);
 			// detalleTipo4(tipo4);
 			// detallePresupuesto(presupuestos);

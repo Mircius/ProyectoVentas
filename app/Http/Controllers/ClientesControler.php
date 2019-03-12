@@ -112,6 +112,7 @@ class ClientesControler extends Controller
 	 	$tipo4 = Archivo::where($matchTipo4)->get();
 	 	$presupuestos = Archivo::where($matchPresupuesto)->get();
 
-    	return view("venta", ['venta'=>$venta], ['facturas'=>$facturas], ['albaranes'=>$albaranes], ['tipo3'=>$tipo3], ['tipo4'=>$tipo4], ['presupuestos'=>$presupuestos]);
+	 	return view("venta",compact('venta','facturas','albaranes','tipo3','tipo4','presupuestos'));
+    	// return view("venta", ['venta'=>$venta], ['facturas'=>$facturas], ['albaranes'=>$albaranes], ['tipo3'=>$tipo3], ['tipo4'=>$tipo4], ['presupuestos'=>$presupuestos]);
 	}
 }
