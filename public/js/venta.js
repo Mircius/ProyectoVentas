@@ -16,7 +16,7 @@ function enlaceAtras(cliente){
 	var id = cliente['id'];
 	var enlace = '/cliente/venta/'+id;
 
-	var boton = ' <a type="button" class="btn btn-dark float-right" href="'+enlace+'"> Atrás </a>'
+	var boton = '<a type="button" class="btn btn-dark float-right" href="'+enlace+'"> Atrás </a>'
 
 	$('.atras').append(boton);
 }

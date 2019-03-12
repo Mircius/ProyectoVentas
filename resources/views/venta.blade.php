@@ -187,7 +187,11 @@
 				</div>
 			</div>
 	<script>
-				
+		var venta = {!! json_encode($venta->toArray(), JSON_HEX_TAG) !!};
+
+		$(document).ready(function() {
+			datosVenta(venta);
+		});				
 	</script>
 </body>
 </html>

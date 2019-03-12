@@ -28,6 +28,6 @@ class TablaVentas extends Migration
      */
     public function down()
     {
-       Schema::drop('clientes');
+       Schema::drop('ventas');
     }
 }
