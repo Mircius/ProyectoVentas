@@ -20,3 +20,18 @@ function enlaceAtras(cliente){
 
 	$('.atras').append(boton);
 }
+
+function editarModal(obj){
+	if (obj.id == 'agregarFac') {
+
+	}else if(obj.id == 'agregarAlb'){
+
+	}else if(obj.id == 'agregarT3'){
+
+	}else if(obj.id == 'agregarT4'){
+
+	}else if(obj.id == 'agregarPres'){
+
+	}
+
+}

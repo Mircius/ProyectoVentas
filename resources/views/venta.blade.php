@@ -65,7 +65,7 @@
 
 			<div class="row">
 			<h4>Facturas</h4> 
-			<img src="{{asset('img/agregar.png')}}" class="agregar" id="agregarFac" data-toggle="modal" data-target="#agrearDoc">
+			<img src="{{asset('img/agregar.png')}}" class="agregar" id="agregarFac" data-toggle="modal" data-target="#agrearDoc" onclick="editarModal(this)">
 		</div>
 			<div class="tabla blan desplegaFac">
 				<div class="encabezado">
@@ -186,6 +186,23 @@
 
 				</div>
 			</div>
+
+			<div class="modal fade" id="agrearDoc">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">X</button>
+						</div>
+						<div class="modal-body">
+						
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+
 	<script>
 		var venta = {!! json_encode($venta->toArray(), JSON_HEX_TAG) !!};
 
