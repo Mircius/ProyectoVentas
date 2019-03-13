@@ -5,6 +5,7 @@
 		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
 		<script type="text/javascript" src="{{asset('js/listas.js')}}"></script>
+		<script type="text/javascript" src="{{asset('js/componenteErrores.js')}}"></script>
 		<script type="text/javascript" src="{{asset('js/venta.js')}}"></script>
 
 		<!-- BOOTSRAP -->
@@ -195,7 +196,7 @@
 							<button type="button" class="close" data-dismiss="modal">X</button>
 						</div>
 						<div class="modal-body">
-							<form  method="POST" action="/cliente/subida/{{$venta->id}}" accept-charset="UTF-8" enctype="multipart/form-data">
+							<form  method="POST" id ="formArchivo"action="/cliente/subida/{{$venta->id}}" accept-charset="UTF-8" enctype="multipart/form-data">
 								{{ csrf_field() }}
 								<div class="form-group">
 
@@ -210,8 +211,7 @@
 									</select> 
 
 									<input type="file" class="form-control-file" id="archivo" name="archivo">
-
-									<button type="submit" class="btn btn-dark float-right"> Guardar </button>
+									<button type="submit" onclick="checkFormSubidaArchivos('formArchivo');return false;" class="btn btn-dark float-right"> Guardar </button>
 								</div>
 							</form>
 						</div>

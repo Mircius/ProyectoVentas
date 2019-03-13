@@ -122,15 +122,15 @@ class ClientesControler extends Controller
 	public function fileSave(Request $request, $id){
 		try{
 			$file = $request->file('archivo');
-						
-			Storage::disk('public')->put('ccccc.pdf',  file_get_contents($file));
+			$nombre = $request->file('archivo')->getClientOriginalName();			
+			Storage::disk('public')->put($nombre,  file_get_contents($file));
 			
-			$archivo = new Archivo;
-		 		$archivo->idVenta = $id;
-				$archivo->archivo = $request->input('archivo');
-				$archivo->tipo = $request->input('tipo');
-				$archivo->estado = $request->input('estado');
-			$archivo->save();
+			//  $archivo = new Archivo;
+		 // 	$archivo->idVenta = $id;
+			// 	$archivo->archivo = $request->input('archivo');
+			// 	$archivo->tipo = $request->input('tipo');
+			// 	$archivo->estado = $request->input('estado');
+			//  $archivo->save();
 
 
 		 	$venta = Venta::find($id);
