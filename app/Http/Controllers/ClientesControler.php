@@ -121,7 +121,10 @@ class ClientesControler extends Controller
 
 	public function fileSave(Request $request, $id){
 		try{
+			$tipo =  "albaran";  //$request->input('tipo')
+			$estado = "pausa";	//$request->input('estado')
 			$file = $request->file('archivo');
+
 			$nombre = $request->file('archivo')->getClientOriginalName();			
 			Storage::disk('public')->put($nombre,  file_get_contents($file));
 			
@@ -132,25 +135,19 @@ class ClientesControler extends Controller
 			// 	$archivo->estado = $request->input('estado');
 			//  $archivo->save();
 
+			Storage::disk('public')->put($nombre,  file_get_contents($file));
+			
+			$fichero = new Archivo;
+		 		$fichero->idVenta = $id;
+				$fichero->archivo = $nombre;
+				$fichero->tipo = $tipo;
+				$fichero->estado = $estado;
+			$fichero->save();
 
-		 	$venta = Venta::find($id);
-
-		 	$matchFactura = ['idVenta' => $id, 'tipo' => 'factura'];
-		 	$matchAlbaran = ['idVenta' => $id, 'tipo' => 'albaran'];
-		 	$matchTipo3 = ['idVenta' => $id, 'tipo' => 'tipo3'];
-		 	$matchTipo4 = ['idVenta' => $id, 'tipo' => 'tipo4'];
-		 	$matchPresupuesto = ['idVenta' => $id, 'tipo' => 'presupuesto'];
-
-		 	$facturas = Archivo::where($matchFactura)->get();
-		 	$albaranes = Archivo::where($matchAlbaran)->get();
-		 	$tipo3 = Archivo::where($matchTipo3)->get();
-		 	$tipo4 = Archivo::where($matchTipo4)->get();
-		 	$presupuestos = Archivo::where($matchPresupuesto)->get();
-
-		 	return view("venta",compact('venta','facturas','albaranes','tipo3','tipo4','presupuestos'));
+		 	return back();
 
 	 	}catch(Exception $e){
-			//return back()->withErrors(['Error1'=>'Error del servidor']);		
+			return back()->withErrors(['Error1'=>'Error del servidor']);		
 		}
 
 	}
