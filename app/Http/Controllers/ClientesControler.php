@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Cliente;
 use App\Venta;
 use App\Archivo;
+use Illuminate\Support\Facades\Storage;
 use Exception;
 
 class ClientesControler extends Controller
@@ -96,23 +97,61 @@ class ClientesControler extends Controller
 	}
 
 	 public function getVenta($id){
-	 	$venta = Venta::find($id);
+	 	try{
+		 	$venta = Venta::find($id);
 
-	 	$matchFactura = ['idVenta' => $id, 'tipo' => 'factura'];
-	 	$matchAlbaran = ['idVenta' => $id, 'tipo' => 'albaran'];
-	 	$matchTipo3 = ['idVenta' => $id, 'tipo' => 'tipo3'];
-	 	$matchTipo4 = ['idVenta' => $id, 'tipo' => 'tipo4'];
-	 	$matchPresupuesto = ['idVenta' => $id, 'tipo' => 'presupuesto'];
+		 	$matchFactura = ['idVenta' => $id, 'tipo' => 'factura'];
+		 	$matchAlbaran = ['idVenta' => $id, 'tipo' => 'albaran'];
+		 	$matchTipo3 = ['idVenta' => $id, 'tipo' => 'tipo3'];
+		 	$matchTipo4 = ['idVenta' => $id, 'tipo' => 'tipo4'];
+		 	$matchPresupuesto = ['idVenta' => $id, 'tipo' => 'presupuesto'];
 
-	 	$facturas = Archivo::where($matchFactura)->get();
-	 	$albaranes = Archivo::where($matchAlbaran)->get();
-	 	// echo $facturas;
-	 	// echo $albaranes;
-	 	$tipo3 = Archivo::where($matchTipo3)->get();
-	 	$tipo4 = Archivo::where($matchTipo4)->get();
-	 	$presupuestos = Archivo::where($matchPresupuesto)->get();
+		 	$facturas = Archivo::where($matchFactura)->get();
+		 	$albaranes = Archivo::where($matchAlbaran)->get();
+		 	$tipo3 = Archivo::where($matchTipo3)->get();
+		 	$tipo4 = Archivo::where($matchTipo4)->get();
+		 	$presupuestos = Archivo::where($matchPresupuesto)->get();
 
-	 	return view("venta",compact('venta','facturas','albaranes','tipo3','tipo4','presupuestos'));
-    	// return view("venta", ['venta'=>$venta], ['facturas'=>$facturas], ['albaranes'=>$albaranes], ['tipo3'=>$tipo3], ['tipo4'=>$tipo4], ['presupuestos'=>$presupuestos]);
+		 	return view("venta",compact('venta','facturas','albaranes','tipo3','tipo4','presupuestos'));
+	 	
+	 	}catch(Exception $e){
+			return back()->withErrors(['Error1'=>'Error del servidor']);		
+		}
+	}
+
+	public function fileSave(Request $request, $id){
+		try{
+			$file = $request->file('archivo');
+						
+			Storage::disk('public')->put('ccccc.pdf',  file_get_contents($file));
+			
+			$archivo = new Archivo;
+		 		$archivo->idVenta = $id;
+				$archivo->archivo = $request->input('archivo');
+				$archivo->tipo = $request->input('tipo');
+				$archivo->estado = $request->input('estado');
+			$archivo->save();
+
+
+		 	$venta = Venta::find($id);
+
+		 	$matchFactura = ['idVenta' => $id, 'tipo' => 'factura'];
+		 	$matchAlbaran = ['idVenta' => $id, 'tipo' => 'albaran'];
+		 	$matchTipo3 = ['idVenta' => $id, 'tipo' => 'tipo3'];
+		 	$matchTipo4 = ['idVenta' => $id, 'tipo' => 'tipo4'];
+		 	$matchPresupuesto = ['idVenta' => $id, 'tipo' => 'presupuesto'];
+
+		 	$facturas = Archivo::where($matchFactura)->get();
+		 	$albaranes = Archivo::where($matchAlbaran)->get();
+		 	$tipo3 = Archivo::where($matchTipo3)->get();
+		 	$tipo4 = Archivo::where($matchTipo4)->get();
+		 	$presupuestos = Archivo::where($matchPresupuesto)->get();
+
+		 	return view("venta",compact('venta','facturas','albaranes','tipo3','tipo4','presupuestos'));
+
+	 	}catch(Exception $e){
+			//return back()->withErrors(['Error1'=>'Error del servidor']);		
+		}
+
 	}
 }

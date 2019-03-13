@@ -24,6 +24,14 @@ function listaVentas(ventas){
 	}
 }
 
+function detalleArchivos(facturas, albaranes, tipo3, tipo4, presupuestos){
+	detalleFacturas(facturas);
+	detalleAlbaran(albaranes);
+	detalleTipo3(tipo3);
+	detalleTipo4(tipo4);
+	detallePresupuesto(presupuestos);
+}
+
 // Logica del Detalle Venta FACTURAS
 function detalleFacturas(factura){
 	var encabezado = ['archivo', 'estado', 'updated_at', 'x', 'x', 'x'];

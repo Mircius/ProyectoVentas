@@ -22,16 +22,29 @@ function enlaceAtras(cliente){
 }
 
 function editarModal(obj){
+	var titulo;
+	var valor;
 	if (obj.id == 'agregarFac') {
+		titulo = 'Agregar factura';
+		valor = 'factura';
 
 	}else if(obj.id == 'agregarAlb'){
+		titulo = 'Agregar albaran';
+		valor = 'albaran';
 
 	}else if(obj.id == 'agregarT3'){
+		titulo = 'Agregar tipo3';
+		valor = 'tipo3';
 
 	}else if(obj.id == 'agregarT4'){
+		titulo = 'Agregar tipo4';
+		valor = 'tipo4';
 
 	}else if(obj.id == 'agregarPres'){
+		titulo = 'Agregar presupuesto';
+		valor = 'presupuesto';
 
 	}
-
+	$('#modalTitulo').text(titulo);
+	$('#tipo').attr('value', valor);
 }

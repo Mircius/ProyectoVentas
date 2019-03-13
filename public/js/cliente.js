@@ -29,7 +29,6 @@ function editar(){
 
 //Deshabilita los campos
 function guardar(){
-	//Cambiar Funcion, para que sea un check checkForm("#editar");
 	if(checkFormModificarClientes ("#editar")){
 		$('.editable').attr('disabled', 'true');
 		$('#btnGuardarCliente').remove();

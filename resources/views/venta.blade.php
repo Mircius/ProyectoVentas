@@ -90,7 +90,7 @@
 		<br>
 		<div class="row">
 			<h4>Albaran</h4>
-			<img src="{{asset('img/agregar.png')}}" class="agregar" id="agregarAlb">
+			<img src="{{asset('img/agregar.png')}}" class="agregar" id="agregarAlb" data-toggle="modal" data-target="#agrearDoc" onclick="editarModal(this)">
 		</div>
 		<div class="tabla blan desplegaAl">
 			<div class="encabezado">
@@ -115,7 +115,7 @@
 		<br>
 		<div class="row">
 			<h4>Tipo3</h4>
-			<img src="{{asset('img/agregar.png')}}" class="agregar" id="agregarT3">
+			<img src="{{asset('img/agregar.png')}}" class="agregar" id="agregarT3" data-toggle="modal" data-target="#agrearDoc" onclick="editarModal(this)">
 		</div>
 		<div class="tabla blan desplegaT3">
 				<div class="encabezado">
@@ -141,7 +141,7 @@
 		<br>
 		<div class="row">
 			<h4>Tipo4</h4>
-			<img src="{{asset('img/agregar.png')}}" class="agregar" id="agregarT4">
+			<img src="{{asset('img/agregar.png')}}" class="agregar" id="agregarT4" data-toggle="modal" data-target="#agrearDoc" onclick="editarModal(this)">
 		</div>
 		<div class="tabla blan desplegaT4">
 				<div class="encabezado">
@@ -166,7 +166,7 @@
 		<br>
 		<div class="row">
 			<h4>Presupuestos</h4>
-			<img src="{{asset('img/agregar.png')}}" class="agregar" id="agregarPres">
+			<img src="{{asset('img/agregar.png')}}" class="agregar" id="agregarPres" data-toggle="modal" data-target="#agrearDoc" onclick="editarModal(this)">
 		</div>	
 		<div class="tabla blan despPre">
 				<div class="encabezado">
@@ -191,10 +191,29 @@
 				<div class="modal-dialog">
 					<div class="modal-content">
 						<div class="modal-header">
+							<h2 id="modalTitulo"></h2>
 							<button type="button" class="close" data-dismiss="modal">X</button>
 						</div>
 						<div class="modal-body">
-						
+							<form  method="POST" action="/cliente/subida/{{$venta->id}}" accept-charset="UTF-8" enctype="multipart/form-data">
+								{{ csrf_field() }}
+								<div class="form-group">
+
+									<label class="labelCliente" for="tipo">Tipo:</label>
+									<input type="text" class="form-control" name="tipo" id="tipo" disabled>
+
+									<label for="estado">Estado</label>
+									<select name="estado" id="estao">
+										<option value="estado1">estado1</option>
+										<option value="estado2">estado2</option>
+										<option value="estado3">estado3</option>
+									</select> 
+
+									<input type="file" class="form-control-file" id="archivo" name="archivo">
+
+									<button type="submit" class="btn btn-dark float-right"> Guardar </button>
+								</div>
+							</form>
 						</div>
 					</div>
 				</div>
@@ -208,17 +227,15 @@
 
 		var facturas = {!! json_encode($facturas->toArray(), JSON_HEX_TAG) !!};
 		var albaranes = {!! json_encode($albaranes->toArray(), JSON_HEX_TAG) !!};
-
+		var tipo3 = {!! json_encode($tipo3->toArray(), JSON_HEX_TAG) !!};
+		var tipo4 = {!! json_encode($tipo4->toArray(), JSON_HEX_TAG) !!};
+		var presupuestos = {!! json_encode($presupuestos->toArray(), JSON_HEX_TAG) !!};
 		
 
 		$(document).ready(function() {
 			datosVenta(venta);
 
-			detalleFacturas(facturas);
-			detalleAlbaran(albaranes);
-			// detalleTipo3(tipo3);
-			// detalleTipo4(tipo4);
-			// detallePresupuesto(presupuestos);
+			detalleArchivos(facturas, albaranes, tipo3, tipo4, presupuestos);
 		});				
 	</script>
 </body>
