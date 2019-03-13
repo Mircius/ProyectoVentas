@@ -203,11 +203,7 @@
 									<input type="text" class="form-control" name="tipo" id="tipo" disabled>
 
 									<label for="estado">Estado</label>
-									<select name="estado" id="estao">
-										<option value="estado1">estado1</option>
-										<option value="estado2">estado2</option>
-										<option value="estado3">estado3</option>
-									</select> 
+									<input type="text" class="form-control" name="estado" id="estado">
 
 									<input type="file" class="form-control-file" id="archivo" name="archivo">
 
