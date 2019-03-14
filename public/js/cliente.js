@@ -24,13 +24,13 @@ function enlace(cliente){
 function editar(){
 	$('.editable').removeAttr('disabled');
 	$('#editarCliente').remove();
-	$('#editarGuardar').append('<button id="guardarCliente" onclick="guardar();return false;" form="editar"><img id="btnGuardarCliente" src="/img/okBlanco.png" height="45" width="45"></button>');
+	$('#editarGuardar').append('<button id="guardarCliente" onclick="guardar();return false;"><img id="btnGuardarCliente" src="/img/okBlanco.png" height="45" width="45"></button>');
 }
 
 //Deshabilita los campos
 function guardar(){
 	if(checkFormModificarClientes ("#editar")){
-		submit();
+		$('#editar').submit();
 		$('.editable').attr('disabled', 'true');
 		$('#guardarCliente').remove();
 		$('#editarGuardar').append('<img id="editarCliente" src="/img/editBlanco.png" height="45" width="55" onclick="editar()">');
