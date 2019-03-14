@@ -11,21 +11,25 @@ var mensajesError = [];
 //Pagina Comprobacion https://www.letranif.com/
 
 
-
+//Añade funciones nada mas llegar al blade. Concretamente al blade de nuevo cliente.
 window.onload=function(){
 	onClick("form");
 	$("div.mostrarErroresJs").hide();
 
 };
+//Añade un onclick
 function  onClick(idForm){
 	$(idForm + " #submit").click(function(){ checkForm(idForm);return false; });
 }
+//Esta funcion junto a la siguiente añaden y eliminan los bordes rojos en caso de error.
 function añadirBorderError(idForm, idInput){	
         $(idForm+ " " + idInput).addClass("border border-danger errores");
 	}
 function eliminarBorderError(idForm, idInput){	
         $(idForm+ " " + idInput).removeClass("border border-danger errores");
 	}
+
+//Comprueba mediante expresiones regulares si los datos insertados son correctos.
 function comprobacion(idInput, logica, idForm) {
 		if( $(idInput).val().match(logica)){
 			eliminarBorderError(idForm, idInput);
@@ -36,6 +40,7 @@ function comprobacion(idInput, logica, idForm) {
 			return false;
 		}
 }
+//Comprobacion para el campo CIF/NIF.
 function dniNifComprobacion(idInput,idForm){
 		if(checkNIF($(idInput).val())){
 			eliminarBorderError(idForm, idInput);
@@ -46,6 +51,7 @@ function dniNifComprobacion(idInput,idForm){
 			return false;
 		}
 	}
+//Funcion que corresponde al blade de cliente y verifica los datos en caso de modificar el cliente.
 function checkFormModificarClientes (idForm){
 	contadorErrores = 0;
 	comprobacion("#nombre", logicaNombreProvinciaLocalidad, idForm);
@@ -69,6 +75,7 @@ function checkFormModificarClientes (idForm){
 		return false;
 	}
 }
+//Funcion que verifica los datos del blade nuevoCliente. 
 function checkForm (idForm) {
 	contadorErrores = 0;
 	comprobacion("#nombre", logicaNombreProvinciaLocalidad, idForm);
@@ -94,7 +101,7 @@ function checkForm (idForm) {
 
 	}
 }
-
+//Funcion pensada para recoger cualquier error en el blade de parte cliente.
 function recogerErrores(){
 	$("input.errores").each(function(){
 		var name = $( this ).attr("name");
@@ -102,6 +109,7 @@ function recogerErrores(){
 	});
 }
 
+//Funcion que construye los mensajes de error.
 function construirErroresMensaje(array){
 	$.each(names, function( index, value ) {
   		if (value == "nombre"){
@@ -130,6 +138,7 @@ function construirErroresMensaje(array){
   		}
 	});
 }
+//Componente que muestra siempre en el mismo lugar los errores.
 function componenteMostrarError(arrayDeStrings){
 	$("ol.mostrarErroresJs").empty();
 	$.each(arrayDeStrings, function( index, value ) {
@@ -137,6 +146,7 @@ function componenteMostrarError(arrayDeStrings){
 		$("div.mostrarErroresJs").show();
 	});
 }
+//Funcion que se utiliza para comprobar la extension del archivo subido.
 function comprueba_extension(formulario, archivo) {
    extensiones_permitidas = new Array(".pdf");
    mierror = "";
@@ -166,7 +176,7 @@ function comprueba_extension(formulario, archivo) {
    alert (mierror);
    return false;
 } 
-
+//Funcion que uso para verificar si el archivo que se sube es correcto.
 function checkFormSubidaArchivos(idForm){
     var fileInput = $("#archivo");
     var filePath = fileInput.val();
