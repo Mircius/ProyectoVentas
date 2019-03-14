@@ -70,12 +70,10 @@
 			<div class="tabla blan desplegaFac">
 				<div class="encabezado">
 					<div class="row">
-						<div class="col-lg-2">Nombre</div>
-						<div class="col-lg-2">Estado</div>
-						<div class="col-lg-2">Fecha modificación</div>
-						<div class="col-lg-2"></div>
-						<div class="col-lg-2"></div>
-						<div class="col-lg-2"></div>
+						<div class="col-lg">Nombre</div>
+						<div class="col-lg">Estado</div>
+						<div class="col-lg">Fecha modificación</div>
+					
 					</div>
 				</div>
 				<hr>
@@ -95,12 +93,10 @@
 		<div class="tabla blan desplegaAl">
 			<div class="encabezado">
 				<div class="row">
-					<div class="col-lg-2">Nombre</div>
-					<div class="col-lg-2">Estado</div>
-					<div class="col-lg-2">Fecha modificación</div>
-					<div class="col-lg-2"></div>
-					<div class="col-lg-2"></div>
-					<div class="col-lg-2"></div>
+					<div class="col-lg">Nombre</div>
+					<div class="col-lg">Estado</div>
+					<div class="col-lg">Fecha modificación</div>
+					
 				</div>
 			</div>
 			<hr>
@@ -120,12 +116,10 @@
 		<div class="tabla blan desplegaT3">
 				<div class="encabezado">
 					<div class="row">
-						<div class="col-lg-2">Nombre</div>
-						<div class="col-lg-2">Estado</div>
-						<div class="col-lg-2">Fecha modificación</div>
-						<div class="col-lg-2"></div>
-						<div class="col-lg-2"></div>
-						<div class="col-lg-2"></div>
+						<div class="col-lg">Nombre</div>
+						<div class="col-lg">Estado</div>
+						<div class="col-lg">Fecha modificación</div>
+						
 					</div>
 				</div>
 				<hr>
@@ -146,12 +140,10 @@
 		<div class="tabla blan desplegaT4">
 				<div class="encabezado">
 					<div class="row">
-						<div class="col-lg-2">Nombre</div>
-						<div class="col-lg-2">Estado</div>
-						<div class="col-lg-2">Fecha modificación</div>
-						<div class="col-lg-2"></div>
-						<div class="col-lg-2"></div>
-						<div class="col-lg-2"></div>
+						<div class="col-lg">Nombre</div>
+						<div class="col-lg">Estado</div>
+						<div class="col-lg">Fecha modificación</div>
+						
 					</div>
 				</div>
 				<hr>
@@ -171,12 +163,10 @@
 		<div class="tabla blan despPre">
 				<div class="encabezado">
 					<div class="row">
-						<div class="col-lg-2">Nombre</div>
-						<div class="col-lg-2">Estado</div>
-						<div class="col-lg-2">Fecha modificación</div>
-						<div class="col-lg-2"></div>
-						<div class="col-lg-2"></div>
-						<div class="col-lg-2"></div>
+						<div class="col-lg">Nombre</div>
+						<div class="col-lg">Estado</div>
+						<div class="col-lg">Fecha modificación</div>
+						
 					</div>
 				</div>
 				<hr>
@@ -187,6 +177,7 @@
 				</div>
 			</div>
 
+<br><br>
 			<div class="modal fade" id="agrearDoc">
 				<div class="modal-dialog">
 					<div class="modal-content">
@@ -200,7 +191,7 @@
 								<div class="form-group">
 
 									<label class="labelCliente" for="tipo">Tipo:</label>
-									<input type="text" class="form-control" name="tipo" id="tipo" disabled>
+									<input type="text" class="form-control" name="tipo" id="tipo" readonly>
 
 									<label for="estado">Estado</label>
 									<input type="text" class="form-control" name="estado" id="estado">

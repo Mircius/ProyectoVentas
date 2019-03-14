@@ -34,7 +34,7 @@ function detalleArchivos(facturas, albaranes, tipo3, tipo4, presupuestos){
 
 // Logica del Detalle Venta FACTURAS
 function detalleFacturas(factura){
-	var encabezado = ['archivo', 'estado', 'updated_at', 'x', 'x', 'x'];
+	var encabezado = ['archivo', 'estado', 'updated_at'];
 	var donde = '#tbodyFactura';
 	
 	for (var campo in factura) {
@@ -47,7 +47,7 @@ function detalleFacturas(factura){
 
 // Logica del Detalle Venta ALBARAN
 function detalleAlbaran(albaran){
-	var encabezado = ['archivo', 'estado', 'updated_at', 'x', 'x', 'x'];
+	var encabezado = ['archivo', 'estado', 'updated_at'];
 	var donde = '#tbodyAlbaran';
 	
 	for (var campo in albaran) {
@@ -59,7 +59,7 @@ function detalleAlbaran(albaran){
 }
 // Logica del Detalle Venta Tipo3
 function detalleTipo3(tipo3){
-	var encabezado = ['archivo', 'estado', 'updated_at', 'x', 'x', 'x'];
+	var encabezado = ['archivo', 'estado', 'updated_at'];
 	var donde = '#tbodyT3';
 	
 	for (var campo in tipo3) {
@@ -71,7 +71,7 @@ function detalleTipo3(tipo3){
 }
 // Logica del Detalle Venta Tipo4
 function detalleTipo4(tipo4){
-	var encabezado = ['archivo', 'estado', 'updated_at', 'x', 'x', 'x'];
+	var encabezado = ['archivo', 'estado', 'updated_at'];
 	var donde = '#tbodyT4';
 	
 	for (var campo in tipo4) {
@@ -83,7 +83,7 @@ function detalleTipo4(tipo4){
 }
 // Logica del Detalle Venta PRESUPUESTOS
 function detallePresupuesto(presupuesto){
-	var encabezado = ['archivo', 'estado', 'updated_at', 'x', 'x', 'x'];
+	var encabezado = ['archivo', 'estado', 'updated_at'];
 	var donde = '#tbodyPresupuesto';
 	
 	for (var campo in presupuesto) {
