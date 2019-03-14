@@ -124,7 +124,16 @@ class ClientesControler extends Controller
 			$tipo =  $request->input('tipo');
 			$estado = $request->input('estado');
 			$file = $request->file('archivo');
-			$nombre = $request->file('archivo')->getClientOriginalName();
+
+			$nombre = $request->file('archivo')->getClientOriginalName();			
+			Storage::disk('public')->put($nombre,  file_get_contents($file));
+			
+			//  $archivo = new Archivo;
+		 // 	$archivo->idVenta = $id;
+			// 	$archivo->archivo = $request->input('archivo');
+			// 	$archivo->tipo = $request->input('tipo');
+			// 	$archivo->estado = $request->input('estado');
+			//  $archivo->save();
 
 			Storage::disk('public')->put($nombre,  file_get_contents($file));
 			
@@ -137,9 +146,8 @@ class ClientesControler extends Controller
 
 		 	return back();
 
-	 }catch(Exception $e){
+	 	}catch(Exception $e){
 			return back()->withErrors(['Error1'=>'Error del servidor']);		
 		}
-
 	}
 }

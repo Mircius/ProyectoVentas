@@ -9,10 +9,7 @@ var mensajesError = [];
 // var logicaCodigoPostal = "^[0-9]{5}$";
 // var logicaNIFCIF = 
 //Pagina Comprobacion https://www.letranif.com/
-String.prototype.isNif=function()
-{
-   return /^(\d{7,8})([A-HJ-NP-TV-Z])$/.test(this) && ("TRWAGMYFPDXBNJZSQVHLCKE"[(RegExp.$1%23)]==RegExp.$2);
-};
+
 
 
 window.onload=function(){
@@ -140,9 +137,42 @@ function componenteMostrarError(arrayDeStrings){
 		$("div.mostrarErroresJs").show();
 	});
 }
+function comprueba_extension(formulario, archivo) {
+   extensiones_permitidas = new Array(".pdf");
+   mierror = "";
+   if (!archivo) {
+      //Si no tengo archivo, es que no se ha seleccionado un archivo en el formulario
+       mierror = "No has seleccionado ningún archivo";
+   }else{
+      //recupero la extensión de este nombre de archivo
+      extension = (archivo.substring(archivo.lastIndexOf("."))).toLowerCase();
+      //alert (extension);
+      //compruebo si la extensión está entre las permitidas
+      permitida = false;
+      for (var i = 0; i < extensiones_permitidas.length; i++) {
+         if (extensiones_permitidas[i] == extension) {
+         permitida = true;
+         break;
+         }
+      }
+      if (!permitida) {
+         mierror = "Comprueba la extensión de los archivos a subir. \nSólo se pueden subir archivos con extensiones: " + extensiones_permitidas.join();
+       }else{
+         formulario.submit();
+         return true;
+       }
+   }
+   //si estoy aqui es que no se ha podido subir
+   alert (mierror);
+   return false;
+} 
 
-
-
+function checkFormSubidaArchivos(idForm){
+    var fileInput = $("#archivo");
+    var filePath = fileInput.val();
+    comprueba_extension(idForm, filePath);
+ 
+}
 
 //Comprobacion NIF/CIF/NIE/DNI
 var NIF_Type = {
