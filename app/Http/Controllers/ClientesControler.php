@@ -79,12 +79,24 @@ class ClientesControler extends Controller
 		}
 	}
 
-	//Funcion de creacion de nueva venta
-	public function newSale($id){
+	// FORMULARIO NUEVA VENTA
+	public function newSaleSave($id){
 		try{
-			$nuevaVenta = new Venta;
-				$nuevaVenta->idCliente = $id;
-			$nuevaVenta->save();
+
+			return view('nuevaVenta');
+		}catch(Exception $e){
+			return back()->withErrors(['Error1'=>'Error del servidor']);		
+		}
+
+	}
+
+	//Funcion de creacion de nueva venta
+	public function newSaleSave(Request $request, $id){
+		try{
+			$venta = new Venta;
+				$venta->idCliente = $request->input('nombre');
+			$venta->save();
+
 
 			$cliente = Cliente::find($id);
 			$ventas = Venta::where('idCliente', $id)->get();
@@ -93,7 +105,6 @@ class ClientesControler extends Controller
 		}catch(Exception $e){
 			return back()->withErrors(['Error1'=>'Error del servidor']);		
 		}
-
 	}
 
 	 public function getVenta($id){
@@ -125,7 +136,6 @@ class ClientesControler extends Controller
 			$estado = $request->input('estado');
 			$file = $request->file('archivo');
 			$nombre = $request->file('archivo')->getClientOriginalName();	
-
 
 			Storage::disk('public')->put($nombre,  file_get_contents($file));
 			

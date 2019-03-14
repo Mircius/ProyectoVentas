@@ -23,6 +23,7 @@ Route::post('/cliente/{id}', 'ClientesControler@update');
 
 //NUEVA VENTA
 Route::get('/cliente/nuevaVenta/{id}', 'ClientesControler@newSale');
+Route::post('/cliente/nuevaVentaSave/{id}', 'ClientesControler@newSaleSave');
 
 //VENTA POR CLIENTE
 Route::get('/cliente/venta/{id}', 'ClientesControler@getVenta');

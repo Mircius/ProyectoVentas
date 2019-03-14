@@ -31,15 +31,6 @@
 			<div class="row bg-dark d-flex justify-content-center">
 				<h1 class="bg-dark text-white">Venta</h1>
 
-				<!-- <div id="editarGuardar">
-					ICONO EDITAR /ICONO GUARDAR
-					<img id="editarCliente" src="{{asset('img/editBlanco.png')}}" height="45" width="55" onclick="editar()">
-
-					VARIARA ENTRE LAS 2 SIGUIENTES IMAGENES
-					<img id="editarCliente" src="{{asset('img/editBlanco.png')}}" height="45" width="55" onclick="editar()">
-					<img id="guardarCliente" src="{{asset('img/okBlanco.png')}}" height="45" width="45" onclick="guardar()">
-				</div> -->
-
 			</div>
 			<br>
 			<div class="atras">
