@@ -5,7 +5,6 @@ function listaClientes(clientes){
 	
 	for (var cliente in clientes) {
 		var enlace = '/cliente/'+clientes[cliente]["id"];
-
 		
 		printLista(encabezado, donde, enlace, clientes[cliente]);
 	}
@@ -23,22 +22,46 @@ function listaVentas(ventas){
 		printLista(encabezado, donde, enlace, ventas[venta]);
 	}
 }
-
+//DISTRIBUIDOR
 function detalleArchivos(facturas, albaranes, tipo3, tipo4, presupuestos){
-	detalleFacturas(facturas);
-	detalleAlbaran(albaranes);
-	detalleTipo3(tipo3);
-	detalleTipo4(tipo4);
-	detallePresupuesto(presupuestos);
+	var icoFacturas = iconos(facturas);
+	var icoAlbaranes = iconos(albaranes);
+	var icoTipo3 = iconos(tipo3);
+	var icoTipo4 = iconos(tipo4);
+	var icoPresupuestos = iconos(presupuestos);
+
+	detalleFacturas(icoFacturas);
+	detalleAlbaran(icoAlbaranes);
+	detalleTipo3(icoTipo3);
+	detalleTipo4(icoTipo4);
+	detallePresupuesto(icoPresupuestos);
 }
+
+//MODIFICA EL JSON PARA AÑADIR ICONOS
+function iconos(dicc){
+
+	for (var llave in dicc){
+
+	var varEditar = '<img src="/img/editNegro.png" class="icono btnEditar" data-toggle="modal" data-target="#ModDoc" id="" onclick="updateModal(this, '+dicc[llave].id+')">';
+	var varVer = '<img src="/img/lupa.png" class="icono btnVer" data-toggle="modal" data-target="#ModDoc" onclick="updateModal(this)">';
+	var varDescarga = '<img src="/img/descarga.png" class="icono btnDescarga" data-toggle="modal" data-target="#ModDoc" onclick="updateModal(this)">';
+
+		dicc[llave].editar = varEditar;
+		dicc[llave].ver = varVer;
+		dicc[llave].descarga = varDescarga;
+	
+	}
+	return dicc;
+}
+
 
 // Logica del Detalle Venta FACTURAS
 function detalleFacturas(factura){
-	var encabezado = ['archivo', 'estado', 'updated_at'];
+	var encabezado = ['archivo', 'estado', 'updated_at', 'editar', 'ver', 'descarga'];
 	var donde = '#tbodyFactura';
 	
 	for (var campo in factura) {
-		var enlace = '#';
+		var enlace = '';
 
 		
 		printLista(encabezado, donde, enlace, factura[campo]);
@@ -47,11 +70,11 @@ function detalleFacturas(factura){
 
 // Logica del Detalle Venta ALBARAN
 function detalleAlbaran(albaran){
-	var encabezado = ['archivo', 'estado', 'updated_at'];
+	var encabezado = ['archivo', 'estado', 'updated_at', 'editar', 'ver', 'descarga'];
 	var donde = '#tbodyAlbaran';
 	
 	for (var campo in albaran) {
-		var enlace = '#';
+		var enlace = '';
 
 		
 		printLista(encabezado, donde, enlace, albaran[campo]);
@@ -59,11 +82,11 @@ function detalleAlbaran(albaran){
 }
 // Logica del Detalle Venta Tipo3
 function detalleTipo3(tipo3){
-	var encabezado = ['archivo', 'estado', 'updated_at'];
+	var encabezado = ['archivo', 'estado', 'updated_at', 'editar', 'ver', 'descarga'];
 	var donde = '#tbodyT3';
 	
 	for (var campo in tipo3) {
-		var enlace = '#';
+		var enlace = '';
 
 		
 		printLista(encabezado, donde, enlace, tipo3[campo]);
@@ -71,11 +94,11 @@ function detalleTipo3(tipo3){
 }
 // Logica del Detalle Venta Tipo4
 function detalleTipo4(tipo4){
-	var encabezado = ['archivo', 'estado', 'updated_at'];
+	var encabezado = ['archivo', 'estado', 'updated_at', 'editar', 'ver', 'descarga'];
 	var donde = '#tbodyT4';
 	
 	for (var campo in tipo4) {
-		var enlace = '#';
+		var enlace = '';
 
 		
 		printLista(encabezado, donde, enlace, tipo4[campo]);
@@ -83,11 +106,11 @@ function detalleTipo4(tipo4){
 }
 // Logica del Detalle Venta PRESUPUESTOS
 function detallePresupuesto(presupuesto){
-	var encabezado = ['archivo', 'estado', 'updated_at'];
+	var encabezado = ['archivo', 'estado', 'updated_at', 'editar', 'ver', 'descarga'];
 	var donde = '#tbodyPresupuesto';
 	
 	for (var campo in presupuesto) {
-		var enlace = '#';
+		var enlace = '';
 
 		
 		printLista(encabezado, donde, enlace, presupuesto[campo]);
@@ -99,12 +122,21 @@ function detallePresupuesto(presupuesto){
 // Componente print lista
 function printLista(encabezado, donde, enlace, cliente){
 	var tamano = encabezado.lenght;
+	
+	if (enlace == '') {
+		var content = '<div class="row">'
+		for(col in encabezado){
+	   		content += '<div class="col-md">' + cliente[encabezado[col]] + '</div>';
+		}
+	content += "</div>"
 
-	var content = ' <a class="lista" href="'+enlace+'"><div class="row">'
-	for(col in encabezado){
-	    content += '<div class="col-md">' + cliente[encabezado[col]] + '</div>';
+	}else{
+		var content = '<a class="lista" href="'+enlace+'"><div class="row">'
+		for(col in encabezado){
+			content += '<div class="col-md">' + cliente[encabezado[col]] + '</div>';
+		}
+		content += "</div> </a>"
 	}
-	content += "</div> </a>"
 
 	$(donde).append(content);
 }

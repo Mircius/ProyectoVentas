@@ -30,3 +30,6 @@ Route::get('/cliente/venta/{id}', 'ClientesControler@getVenta');
 
 //SUBIDA DE ARCHIVOS
 Route::post('/cliente/subida/{id}', 'ClientesControler@fileSave');
+
+//MODIFICACION DE ARCHIVOS
+Route::post('/cliente/updateArchivo/{id}', 'ClientesControler@updateArchivo');

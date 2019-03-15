@@ -54,15 +54,18 @@
 				</div>
 				<div class="col"></div>
 			</div>
-			<div class="col"></div>
+			<div class="row">
+			<div class="col-md-1"></div>
 			<div class="col-md-10">
 				<div class="form-group">
-					<label for="descripcion" class="etiqueta" for="tipo">Descripción:</label>
-					<textarea rows="4" cols="50"  class="form-control" name="descripcion" id="descripcion"></textarea>
+					<label for="descripcion" class="etiqueta" for="descripcion">Descripción:</label>
+					<textarea rows="4" cols="50"  class="form-control" name="descripcion" id="descripcion" readonly></textarea>
 				</div>
-			</div>
-			<div class="col"></div>
 
+				<br>
+			</div>
+			<div class="col-md-1"></div>
+			</div>
 			<div class="row">
 			<h4>Facturas</h4> 
 			<img src="{{asset('img/agregar.png')}}" class="agregar" id="agregarFac" data-toggle="modal" data-target="#agrearDoc" onclick="editarModal(this)">
@@ -73,6 +76,9 @@
 						<div class="col-lg">Nombre</div>
 						<div class="col-lg">Estado</div>
 						<div class="col-lg">Fecha modificación</div>
+						<div class="col-lg"></div>
+						<div class="col-lg"></div>
+						<div class="col-lg"></div>
 					
 					</div>
 				</div>
@@ -96,7 +102,9 @@
 					<div class="col-lg">Nombre</div>
 					<div class="col-lg">Estado</div>
 					<div class="col-lg">Fecha modificación</div>
-					
+					<div class="col-lg"></div>
+						<div class="col-lg"></div>
+						<div class="col-lg"></div>
 				</div>
 			</div>
 			<hr>
@@ -119,7 +127,9 @@
 						<div class="col-lg">Nombre</div>
 						<div class="col-lg">Estado</div>
 						<div class="col-lg">Fecha modificación</div>
-						
+						<div class="col-lg"></div>
+						<div class="col-lg"></div>
+						<div class="col-lg"></div>
 					</div>
 				</div>
 				<hr>
@@ -143,7 +153,9 @@
 						<div class="col-lg">Nombre</div>
 						<div class="col-lg">Estado</div>
 						<div class="col-lg">Fecha modificación</div>
-						
+						<div class="col-lg"></div>
+						<div class="col-lg"></div>
+						<div class="col-lg"></div>
 					</div>
 				</div>
 				<hr>
@@ -166,7 +178,9 @@
 						<div class="col-lg">Nombre</div>
 						<div class="col-lg">Estado</div>
 						<div class="col-lg">Fecha modificación</div>
-						
+						<div class="col-lg"></div>
+						<div class="col-lg"></div>
+						<div class="col-lg"></div>
 					</div>
 				</div>
 				<hr>
@@ -186,7 +200,7 @@
 							<button type="button" class="close" data-dismiss="modal">X</button>
 						</div>
 						<div class="modal-body">
-							<form  method="POST" id ="formArchivo"action="/cliente/subida/{{$venta->id}}" accept-charset="UTF-8" enctype="multipart/form-data">
+							<form  method="POST" id ="formArchivo" action="/cliente/subida/{{$venta->id}}" accept-charset="UTF-8" enctype="multipart/form-data">
 								{{ csrf_field() }}
 								<div class="form-group">
 
@@ -198,6 +212,30 @@
 
 									<input type="file" class="form-control-file" id="archivo" name="archivo">
 									<button type="submit" onclick="checkFormSubidaArchivos('formArchivo');return false;" class="btn btn-dark float-right"> Guardar </button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal fade" id="ModDoc">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h2> Modificar archivo </h2>
+							<button type="button" class="close" data-dismiss="modal">X</button>
+						</div>
+						<div class="modal-body">
+							<form  method="POST" id ="formArchivoUp" action="/cliente/updateArchivo/{{$venta->id}}" accept-charset="UTF-8" enctype="multipart/form-data">
+								{{ csrf_field() }}
+								<div class="form-group">
+
+									<label for="estadoUp">Estado</label>
+									<input type="text" class="form-control" name="estadoUp" id="estadoUp">
+
+									<input type="file" class="form-control-file" id="archivoUp" name="archivoUp">
+									<button type="submit" class="btn btn-dark float-right"> Guardar </button>
 								</div>
 							</form>
 						</div>

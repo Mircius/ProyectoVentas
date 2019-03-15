@@ -9,6 +9,7 @@ use App\Archivo;
 use Illuminate\Support\Facades\Storage;
 use Exception;
 
+
 class ClientesControler extends Controller
 {
 	//Vista Principal
@@ -93,7 +94,7 @@ class ClientesControler extends Controller
 
 	//Funcion de creacion de nueva venta
 	public function newSaleSave(Request $request, $id){
-		// try{
+		try{
 			$venta = new Venta;
 				$venta->idCliente = $request->input('idCliente');
 				$venta->descripcion = $request->input('descripcion');
@@ -104,11 +105,12 @@ class ClientesControler extends Controller
 			$ventas = Venta::where('idCliente', $id)->get();
 
 			return view('cliente', ['cliente'=>$cliente], ['ventas'=>$ventas]);
-		// }catch(Exception $e){
-		// 	return back()->withErrors(['Error1'=>'Error del servidor']);		
-		// }
+		}catch(Exception $e){
+		 	return back()->withErrors(['Error1'=>'Error del servidor']);		
+		}
 	}
 
+	//VISTA DE DETALLE VENTA
 	 public function getVenta($id){
 	 	try{
 		 	$venta = Venta::find($id);
@@ -132,15 +134,15 @@ class ClientesControler extends Controller
 		}
 	}
 
+	//FUNCION DE SUBIDA DE ARCHIVOS
 	public function fileSave(Request $request, $id){
 		try{
+
 			$tipo =  $request->input('tipo');
 			$estado = $request->input('estado');
 			$file = $request->file('archivo');
 			$nombre = $request->file('archivo')->getClientOriginalName();	
 
-			Storage::disk('public')->put($nombre,  file_get_contents($file));
-			
 			$fichero = new Archivo;
 		 		$fichero->idVenta = $id;
 				$fichero->archivo = $nombre;
@@ -148,10 +150,42 @@ class ClientesControler extends Controller
 				$fichero->estado = $estado;
 			$fichero->save();
 
-		 	return back();
+			// Añade el id al nombre del archivo
+			$nombreArchivo = $fichero->id.'_'.$request->file('archivo')->getClientOriginalName();
+			Storage::disk('public')->put($nombreArchivo,  file_get_contents($file));
+
+			return $this->getVenta($id);
+		 	//return back();
 
 	 	}catch(Exception $e){
-			return back()->withErrors(['Error1'=>'Error del servidor']);		
+			return back()->withErrors(['Error1'=>'Error del servidor']);	
 		}
 	}
+
+	//FUNCION DE ACTUALIZACION DE ARCHIVO
+	public function updateArchivo(Request $request, $id){
+
+		$estado = $request->input('estadoUp');
+		$file = $request->file('archivoUp');
+		$nombre = $request->file('archivoUp')->getClientOriginalName();
+
+		$nombreAntiguo = Archivo::select('archivo')->where('id', $id)->get();
+		$ficheroAntiguo = $id.$nombreAntiguo;
+
+		Storage::delete($ficheroAntiguo);
+
+		$fichero = Archivo::find($id);
+			$fichero->archivo = "prueba1";
+			$fichero->estado = "pausa";
+		$fichero->save();
+
+		// Añade el id al nombre del archivo
+		$nombreArchivo = $fichero->id.'_'.$request->file('archivo')->getClientOriginalName();
+		Storage::disk('public')->put($nombreArchivo,  file_get_contents($file));
+
+
+		return $this->getVenta($id);
+	}
+
+
 }

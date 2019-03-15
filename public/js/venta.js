@@ -1,20 +1,22 @@
 // Añade el value al formulario de Venta
 function datosVenta(venta){
-	var encabezado = [ 'id', 'created_at', 'updated_at', 'descripcion'];
+	var encabezado = [ 'id', 'created_at', 'updated_at'];
 
 	datosForm(venta, encabezado);
+
+	//DESCRIPCION ES UN TEXT AREA LOS DATOS NO VAN AL VALUE
+		for (var campo in venta) {
+			// var cabecera = encabezado[llave];
+			$('#descripcion').text(venta['descripcion']);
+		}
 }
 
 // Añade el value al formulario de NUEVA VENTA
 function datosNuevaVenta(cliente){
 	var encabezado = [ 'id'];
 
-	//ES DIFERENTE POR QUE NO COINCIDEN EL ID DE ENCABEZADO CON EL CAMPO DE LA DB
-	for (var llave in encabezado){
-		for (var campo in cliente) {
-			var cabecera = encabezado[llave];
-			$('#idCliente').attr('value',cliente[cabecera]);
-		}
+	for (var campo in cliente) {
+		$('#idCliente').attr('value',cliente['id']);
 	}
 }
 
@@ -69,4 +71,10 @@ function editarModal(obj){
 	}
 	$('#modalTitulo').text(titulo);
 	$('#tipo').attr('value', valor);
+}
+
+function updateModal(obj){
+	console.log(obj);
+
+	
 }
