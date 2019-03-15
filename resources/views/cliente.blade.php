@@ -45,7 +45,7 @@
 			</div>
 			<br>
 			<div class="atras">
-				 <a type="button" class="btn btn-dark float-right" href="{{ URL::to('/') }}"> Atrás </a>
+				<a href="{{ URL::previous() }}" type="button" class="btn btn-dark float-right"> Atrás </a>
 			</div>
 
 			<br>

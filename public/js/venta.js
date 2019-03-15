@@ -1,24 +1,46 @@
-// Añade el value al formulario
+// Añade el value al formulario de Venta
 function datosVenta(venta){
-	var encabezado = [ 'id', 'created_at', 'updated_at'];
+	var encabezado = [ 'id', 'created_at', 'updated_at', 'descripcion'];
 
+	datosForm(venta, encabezado);
+}
+
+// Añade el value al formulario de NUEVA VENTA
+function datosNuevaVenta(cliente){
+	var encabezado = [ 'id'];
+
+	//ES DIFERENTE POR QUE NO COINCIDEN EL ID DE ENCABEZADO CON EL CAMPO DE LA DB
 	for (var llave in encabezado){
-		for (var campo in venta) {
+		for (var campo in cliente) {
 			var cabecera = encabezado[llave];
-
-			$('#'+cabecera).attr('value',venta[cabecera]);
+			$('#idCliente').attr('value',cliente[cabecera]);
 		}
 	}
 }
 
-//Añade enlace al boton atras
-function enlaceAtras(cliente){
-	var id = cliente['id'];
-	var enlace = '/cliente/venta/'+id;
 
-	var boton = '<a type="button" class="btn btn-dark float-right" href="'+enlace+'"> Atrás </a>'
+//COMPONENTE RELLENAR FORMS
+function datosForm(valores, encabezado){
 
-	$('.atras').append(boton);
+	for (var llave in encabezado){
+		for (var campo in valores) {
+			var cabecera = encabezado[llave];
+
+			$('#'+cabecera).attr('value',valores[cabecera]);
+		}
+	}
+}
+
+//Añade action al form
+function enlaceForm(){
+
+	for (var campo in cliente){
+		var idCliente = cliente['id'];
+	}
+
+	var enlace = "/cliente/nuevaVentaSave/"+ idCliente;
+
+	$('#formNuevaVenta').attr('action', enlace);
 }
 
 function editarModal(obj){

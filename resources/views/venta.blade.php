@@ -34,7 +34,7 @@
 			</div>
 			<br>
 			<div class="atras">
-				 
+				<a href="{{ URL::previous() }}" type="button" class="btn btn-dark float-right"> Atrás </a>
 			</div>
 			<br>
 
@@ -42,18 +42,26 @@
 				<div class="col"></div>
 				<div class="form-group col">
 					<label for="id">ID:</label>
-					<input type="text" class="form-control" name="id" id="id" disabled value="1">
+					<input type="text" class="form-control" name="id" id="id" readonly value="">
 				</div>
 				<div class="form-group col">
 					<label for="created_at">Fecha de creación:</label>
-					<input type="text" class="form-control" name="created_at" id="created_at" disabled value="27/07/2017">
+					<input type="text" class="form-control" name="created_at" id="created_at" readonly value="">
 				</div>
 				<div class="form-group col">
 					<label for="updated_at">Fecha última modificación:</label>
-					<input type="text" class="form-control" name="updated_at" id="updated_at" disabled value="18/12/2017">
+					<input type="text" class="form-control" name="updated_at" id="updated_at" readonly value="">
 				</div>
 				<div class="col"></div>
 			</div>
+			<div class="col"></div>
+			<div class="col-md-10">
+				<div class="form-group">
+					<label for="descripcion" class="etiqueta" for="tipo">Descripción:</label>
+					<textarea rows="4" cols="50"  class="form-control" name="descripcion" id="descripcion"></textarea>
+				</div>
+			</div>
+			<div class="col"></div>
 
 			<div class="row">
 			<h4>Facturas</h4> 

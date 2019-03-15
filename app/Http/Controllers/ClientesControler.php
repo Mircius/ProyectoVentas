@@ -80,10 +80,11 @@ class ClientesControler extends Controller
 	}
 
 	// FORMULARIO NUEVA VENTA
-	public function newSaleSave($id){
+	public function newSale($id){
 		try{
-
-			return view('nuevaVenta');
+			$cliente = Cliente::find($id);
+			
+			return view('nuevaVenta', ['cliente'=>$cliente]);
 		}catch(Exception $e){
 			return back()->withErrors(['Error1'=>'Error del servidor']);		
 		}
@@ -92,9 +93,10 @@ class ClientesControler extends Controller
 
 	//Funcion de creacion de nueva venta
 	public function newSaleSave(Request $request, $id){
-		try{
+		// try{
 			$venta = new Venta;
-				$venta->idCliente = $request->input('nombre');
+				$venta->idCliente = $request->input('idCliente');
+				$venta->descripcion = $request->input('descripcion');
 			$venta->save();
 
 
@@ -102,9 +104,9 @@ class ClientesControler extends Controller
 			$ventas = Venta::where('idCliente', $id)->get();
 
 			return view('cliente', ['cliente'=>$cliente], ['ventas'=>$ventas]);
-		}catch(Exception $e){
-			return back()->withErrors(['Error1'=>'Error del servidor']);		
-		}
+		// }catch(Exception $e){
+		// 	return back()->withErrors(['Error1'=>'Error del servidor']);		
+		// }
 	}
 
 	 public function getVenta($id){

@@ -130,3 +130,9 @@ h4{
 .desplegable{
 	align-content: right;
 }
+
+/*FORM NUEVA VENTA*/
+.etiqueta{
+	padding: 10px;
+	width: 70px;
+}
