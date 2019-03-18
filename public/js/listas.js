@@ -42,7 +42,7 @@ function iconos(dicc){
 
 	for (var llave in dicc){
 
-	var varEditar = '<img src="/img/editNegro.png" class="icono btnEditar" data-toggle="modal" data-target="#ModDoc" id="" onclick="updateModal(this, '+dicc[llave].id+')">';
+	var varEditar = '<img src="/img/editNegro.png" class="icono btnEditar" data-toggle="modal" data-target="#ModDoc" onclick="updateModal('+dicc[llave].id+')">';
 	var varVer = '<img src="/img/lupa.png" class="icono btnVer" data-toggle="modal" data-target="#ModDoc" onclick="updateModal(this)">';
 	var varDescarga = '<img src="/img/descarga.png" class="icono btnDescarga" data-toggle="modal" data-target="#ModDoc" onclick="updateModal(this)">';
 

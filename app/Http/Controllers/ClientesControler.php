@@ -169,22 +169,26 @@ class ClientesControler extends Controller
 		$file = $request->file('archivoUp');
 		$nombre = $request->file('archivoUp')->getClientOriginalName();
 
-		$nombreAntiguo = Archivo::select('archivo')->where('id', $id)->get();
-		$ficheroAntiguo = $id.$nombreAntiguo;
+
+		$nombreAntiguo = Archivo::find($id, ['archivo']);
+		$ficheroAntiguo = $id.'_'.$nombreAntiguo['archivo'];
 
 		Storage::delete($ficheroAntiguo);
 
 		$fichero = Archivo::find($id);
-			$fichero->archivo = "prueba1";
-			$fichero->estado = "pausa";
+			$fichero->archivo = $nombre;
+			$fichero->estado = $estado;
 		$fichero->save();
 
 		// Añade el id al nombre del archivo
-		$nombreArchivo = $fichero->id.'_'.$request->file('archivo')->getClientOriginalName();
+		$nombreArchivo = $id.'_'.$nombre;
 		Storage::disk('public')->put($nombreArchivo,  file_get_contents($file));
 
 
-		return $this->getVenta($id);
+		//BUSCA EL ID DE LA VENTA RELACIONADA CON EL ARCHIVO
+		$idVenta = Archivo::find($id, ['idVenta']);
+
+		return $this->getVenta($idVenta['idVenta']);
 	}
 
 

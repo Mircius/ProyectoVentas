@@ -75,6 +75,6 @@ function editarModal(obj){
 
 function updateModal(obj){
 	console.log(obj);
-
+	$('#formArchivoUp').attr('action', '/cliente/updateArchivo/'+obj)
 	
 }
