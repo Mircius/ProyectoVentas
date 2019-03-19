@@ -8,14 +8,16 @@ use App\Venta;
 use App\Archivo;
 use Illuminate\Support\Facades\Storage;
 use Exception;
+use Illuminate\Support\Collection;
 
 
 class ClientesControler extends Controller
 {
 	//Vista Principal
     public function getClientes(){
-		$clientes = Cliente::select('id', 'nombre', 'email', 'cifNif', 'codigoPostal', 'provincia', 'localidad')->get();
-    	return view("listaClientes", ['clientes'=>$clientes]);
+		$clientes = Cliente::select('id', 'nombre', 'email', 'cifNif', 'codigoPostal', 'provincia', 'localidad')->paginate(5);
+
+    	return view("listaClientes", compact('clientes'));
 	}
 
 	// Formulario de creacion de clientes
@@ -164,31 +166,36 @@ class ClientesControler extends Controller
 
 	//FUNCION DE ACTUALIZACION DE ARCHIVO
 	public function updateArchivo(Request $request, $id){
-
-		$estado = $request->input('estadoUp');
-		$file = $request->file('archivoUp');
-		$nombre = $request->file('archivoUp')->getClientOriginalName();
-
-
-		$nombreAntiguo = Archivo::find($id, ['archivo']);
-		$ficheroAntiguo = $id.'_'.$nombreAntiguo['archivo'];
-
-		Storage::delete($ficheroAntiguo);
-
-		$fichero = Archivo::find($id);
-			$fichero->archivo = $nombre;
-			$fichero->estado = $estado;
-		$fichero->save();
-
-		// Añade el id al nombre del archivo
-		$nombreArchivo = $id.'_'.$nombre;
-		Storage::disk('public')->put($nombreArchivo,  file_get_contents($file));
+		try{
+			$estado = $request->input('estadoUp');
+			$file = $request->file('archivoUp');
+			$nombre = $request->file('archivoUp')->getClientOriginalName();
 
 
-		//BUSCA EL ID DE LA VENTA RELACIONADA CON EL ARCHIVO
-		$idVenta = Archivo::find($id, ['idVenta']);
+			$nombreAntiguo = Archivo::find($id, ['archivo']);
+			$ficheroAntiguo = $id.'_'.$nombreAntiguo['archivo'];
 
-		return $this->getVenta($idVenta['idVenta']);
+			Storage::delete($ficheroAntiguo);
+
+			$fichero = Archivo::find($id);
+				$fichero->archivo = $nombre;
+				$fichero->estado = $estado;
+			$fichero->save();
+
+			// Añade el id al nombre del archivo
+			$nombreArchivo = $id.'_'.$nombre;
+			Storage::disk('public')->put($nombreArchivo,  file_get_contents($file));
+
+
+			//BUSCA EL ID DE LA VENTA RELACIONADA CON EL ARCHIVO
+			$idVenta = Archivo::find($id, ['idVenta']);
+
+			return $this->getVenta($idVenta['idVenta']);
+
+		}catch(Exception $e){
+			return back()->withErrors(['Error1'=>'Error del servidor']);	
+		}
+		
 	}
 
 	public function downloadArchivo($nombre){
@@ -199,6 +206,30 @@ class ClientesControler extends Controller
 	      catch(Exception $e) {
 				return back()->withErrors(['Error1'=>'Error del servidor']);	
 	      }
+    }
+
+    public function filtroClientes(Request $request){
+    	$filtro = $request->input('filtro');
+
+    	$clientes = Cliente::select('id', 'nombre', 'email', 'cifNif', 'codigoPostal', 'provincia', 'localidad')->where('nombre', 'like', '%'.$filtro.'%')->orwhere('localidad', 'like', '%'.$filtro.'%')->orwhere('cifNif', 'like', '%'.$filtro.'%')->paginate(5);
+
+    	$filtro = $request->get('filtro');
+
+    	$clientes->appends(['filtro' => $filtro])->links();
+
+		 return view("listaClientes", compact('clientes', 'enlace'));
+    }
+
+    public function filtroVentas(Request $request){
+    	$filtro = $request->input('filtro');
+
+    	$busqueda = $request->get('filtro');
+
+    	$clientes = Cliente::select('id', 'nombre', 'email', 'cifNif', 'codigoPostal', 'provincia', 'localidad')->where('nombre', 'like', '%'.$filtro.'%')->orwhere('localidad', 'like', '%'.$filtro.'%')->orwhere('cifNif', 'like', '%'.$filtro.'%')->get();
+
+    	
+
+		 return view("listaClientes", compact('clientes', 'busqueda'));
     }
 
 }
