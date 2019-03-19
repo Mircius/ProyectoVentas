@@ -74,7 +74,15 @@ function editarModal(obj){
 }
 
 function updateModal(obj){
-	console.log(obj);
 	$('#formArchivoUp').attr('action', '/cliente/updateArchivo/'+obj)
 	
+}
+
+function visualizarPDF(string){
+	window.open("/storage/"+string, '_blank', 'fullscreen=yes');
+}
+function descargarPDF(string){
+	console.log(string);
+	window.open("/download/"+string, '_blank', 'fullscreen=yes');
+
 }
