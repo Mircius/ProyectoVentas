@@ -37,6 +37,15 @@
 			</div>
 		</div>
 
+		<div class="row filtro">
+			<!-- Campos de filtrado -->
+			<div class="col-md-4"></div>
+			<div class="col-md-4 form-group form-inline">
+				<input type="text" class="form-control inline" id="filtro" name="filtro" value="">
+				<button type="submit" class="btn btn-dark" id="btnFiltro">Filtrar</button>
+			</div>
+			<div class="col-md-4"></div>
+		</div>
 	<!-- Tabla clientes -->
 		<div class="row">
 			<div class="col-md tabla centered">
@@ -56,6 +65,9 @@
 
 				</div>	
 			</div>
+		</div>
+		<div class="row paginado">
+			<!-- PAGINACION -->
 		</div>
 		<br><br>
 

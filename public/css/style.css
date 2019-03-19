@@ -26,9 +26,6 @@
 	width: 55px;
 }
 
-#btnGuardarCliente{
-	/**/
-}
 
 #guardarCliente, #guardarCliente:active, #guardarCliente:hover, #guardarCliente:focus, #guardarCliente:link{
 	width: 55px;
@@ -139,4 +136,26 @@ h4{
 .icono{
 	height: 30px;
 	width: 30px;
+}
+
+/*Paginacion*/
+
+.pagination{
+	border-radius: 5px;
+}
+
+.pagination li a{
+	color: #fff;
+	background: #808080;
+}
+
+.pagination li a:hover{
+	color: #fff;
+	background: #8080FF;
+}
+
+/*Filtrado*/
+
+#filtro{
+	margin-right: 20px;
 }
