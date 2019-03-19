@@ -33,3 +33,5 @@ Route::post('/cliente/subida/{id}', 'ClientesControler@fileSave');
 
 //MODIFICACION DE ARCHIVOS
 Route::post('/cliente/updateArchivo/{id}', 'ClientesControler@updateArchivo');
+//DESCARGA ARCHIVOS
+Route::post('/cliente/download/{nombre}','ClientesControler@fileSave');
