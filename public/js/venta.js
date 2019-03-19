@@ -82,8 +82,3 @@ function updateModal(obj){
 function visualizarPDF(string){
 	window.open("/storage/"+string, '_blank', 'fullscreen=yes');
 }
-function descargarPDF(string){
-	console.log(string);
-	window.open("/download/"+string, '_blank', 'fullscreen=yes');
-
-}

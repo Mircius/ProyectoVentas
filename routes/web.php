@@ -35,6 +35,5 @@ Route::post('/cliente/subida/{id}', 'ClientesControler@fileSave');
 Route::post('/cliente/updateArchivo/{id}', 'ClientesControler@updateArchivo');
 
 //DESCARGA ARCHIVOS
-Route::post('/cliente/download/{nombre}', 'ClientesControler@fileSave');
+Route::get('/download/{nombre}','DownloadFile@downloadArchivo');
 
-// FILTRADO

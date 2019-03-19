@@ -198,15 +198,7 @@ class ClientesControler extends Controller
 		
 	}
 
-	public function downloadArchivo($nombre){
-	      try{
-	        $pathtoFile = public_path().'/storage/'.$nombre;
-	        return response()->download($pathtoFile);
-	      }
-	      catch(Exception $e) {
-				return back()->withErrors(['Error1'=>'Error del servidor']);	
-	      }
-    }
+	
 
     public function filtroClientes(Request $request){
     	$filtro = $request->input('filtro');
