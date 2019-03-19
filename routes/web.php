@@ -11,7 +11,7 @@
 |
 */
 // LISTA DE CLIENTES
-Route::get('/',['uses' => 'ClientesControler@getClientes', 'as' => '/']);
+Route::get('/',['uses' => 'ClientesControler@filtroClientes', 'as' => '/']);
 
 //NUEVO CLIENTE
 // Route::get('/create', 'ClientesControler@getCreate');
@@ -40,5 +40,7 @@ Route::post('/cliente/subida/{id}', 'ClientesControler@fileSave');
 
 //MODIFICACION DE ARCHIVOS
 Route::post('/cliente/updateArchivo/{id}', 'ClientesControler@updateArchivo');
+
 //DESCARGA ARCHIVOS
 Route::get('/download/{nombre}','DownloadFile@downloadArchivo');
+

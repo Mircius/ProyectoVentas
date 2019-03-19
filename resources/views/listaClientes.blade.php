@@ -45,8 +45,10 @@
 			<!-- Campos de filtrado -->
 			<div class="col-md-4"></div>
 			<div class="col-md-4 form-group form-inline">
-				<input type="text" class="form-control inline" id="filtro" name="filtro" value="">
-				<button type="submit" class="btn btn-dark" id="btnFiltro">Filtrar</button>
+				<form method="GET" id ="filtradoClientes" action="/">	
+						<input type="text" class="form-control inline" id="filtro" name="filtro" value="">
+						<button type="submit" class="btn btn-dark" id="btnFiltro">Filtrar</button>
+				</form>
 			</div>
 			<div class="col-md-4"></div>
 		</div>
@@ -71,7 +73,11 @@
 			</div>
 		</div>
 		<div class="row paginado">
-			<!-- PAGINACION -->
+			<div class="col-md"></div>
+			<div class="col-md">
+			{{ $clientes->links() }}
+			</div>
+			<div class="col-md"></div>
 		</div>
 		<br><br>
 
@@ -80,7 +86,7 @@
 	<script>
 		var clientes = {!! json_encode($clientes->toArray(), JSON_HEX_TAG) !!};
 		$(document).ready(function() {
-			listaClientes(clientes);
+			listaClientes(clientes.data);
 		});		
 	</script>
 </body>
