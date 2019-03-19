@@ -30,8 +30,9 @@
 			<div class="row bg-dark d-flex justify-content-center">
 				<h1 class="bg-dark text-white">Venta</h1>
 			</div>
-
-			<br>
+			<div class="row breadcrumbs">
+				 {{ Breadcrumbs::render('Nueva_Venta',$cliente['id']) }}		
+ 			</div>
 			<div class="row">
 				<div class="col-lg-1"></div>
 				<div class="col-lg">

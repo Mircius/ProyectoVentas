@@ -31,7 +31,10 @@
 		<div class="row bg-dark d-flex justify-content-center">
 			<h1 class="bg-dark text-white">Nuevo cliente</h1>
 		</div>
-		<br>
+			<!-- Migas de pan -->
+			<div class="row breadcrumbs">
+				 {{ Breadcrumbs::render('Crear')}}		
+ 			</div>
 
 		<!-- FORMULARIO -->
 		<div class="row">

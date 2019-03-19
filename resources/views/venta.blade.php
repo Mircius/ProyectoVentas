@@ -30,8 +30,10 @@
 		<!-- Titulo -->
 			<div class="row bg-dark d-flex justify-content-center">
 				<h1 class="bg-dark text-white">Venta</h1>
-
 			</div>
+			<div class="row breadcrumbs">
+				 {{ Breadcrumbs::render('Venta',$venta['idCliente'], $venta['id']) }}		
+ 			</div>
 			<br>
 			<div class="atras">
 				<a href="{{ URL::previous() }}" type="button" class="btn btn-dark float-right"> Atrás </a>
