@@ -40,13 +40,13 @@ function detalleArchivos(facturas, albaranes, tipo3, tipo4, presupuestos){
 //MODIFICA EL JSON PARA AÑADIR ICONOS
 function iconos(dicc){
 	for (var llave in dicc){
-	var nombre = dicc[llave].id+'_'+dicc[llave].archivo
-	nombre.toString();
-	var varEditar = '<img src="/img/editNegro.png" class="icono btnEditar" data-toggle="modal" data-target="#ModDoc" onclick="updateModal('+dicc[llave].id+')">';
-	var varVer = '<img src="/img/lupa.png" class="icono btnVer" onclick="visualizarPDF(\''+dicc[llave].id+'_'+dicc[llave].archivo+'\')">';
-	var varDescarga = '<img src="/img/descarga.png" class="icono btnDescarga" onclick="descargarPDF(\''+dicc[llave].id+'_'+dicc[llave].archivo+'\')">';
-		 // var download = "<a>".attr("href","/download/"+nombre).attr("target","_blank");
-		 // <a href="/download/"+dicc[llave].id+'_'+dicc[llave].archivo+'
+		var nombre = dicc[llave].id+'_'+dicc[llave].archivo
+		nombre = nombre.toString();
+		var varEditar = '<img src="/img/editNegro.png" class="icono btnEditar" data-toggle="modal" data-target="#ModDoc" onclick="updateModal('+dicc[llave].id+')">';
+		var varVer = '<img src="/img/lupa.png" class="icono btnVer" onclick="visualizarPDF(\''+nombre+'\')">';
+		var varDescarga = ' <a href="/download/'+nombre+'" target="_blank"> <img src="/img/descarga.png" class="icono btnDescarga" > </a> '
+
+// '<img src="/img/descarga.png" class="icono btnDescarga" onclick="descargarPDF(\''+nombre+'\')">';
 		dicc[llave].editar = varEditar;
 		dicc[llave].ver = varVer;
 		dicc[llave].descarga = varDescarga;

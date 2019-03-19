@@ -191,15 +191,7 @@ class ClientesControler extends Controller
 		return $this->getVenta($idVenta['idVenta']);
 	}
 
-	public function downloadArchivo($nombre){
-	      try{
-	        $pathtoFile = public_path().'/storage/'.$nombre;
-	        return response()->download($pathtoFile);
-	      }
-	      catch(Exception $e) {
-				return back()->withErrors(['Error1'=>'Error del servidor']);	
-	      }
-    }
+	
 
 }
 
