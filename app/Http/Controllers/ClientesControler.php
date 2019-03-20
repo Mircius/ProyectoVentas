@@ -63,7 +63,6 @@ class ClientesControler extends Controller
 			})->paginate(5);
     	
 	    	$filtro = $request->get('filtro');
-	    	echo $filtro;
 
 	    	$ventas->appends(['filtro' => $filtro])->links();
 
@@ -76,7 +75,7 @@ class ClientesControler extends Controller
 
 	//Funcion de actualizacion de clientes
 	public function update(Request $request, $id){
-		// try{
+		try{
 			$cliente = Cliente::find($id);
 				$cliente->nombre = $request->input('nombre');
 				$cliente->email = $request->input('email');
@@ -89,9 +88,9 @@ class ClientesControler extends Controller
 			$cliente->save();
 
 			return redirect()->route('cliente', $id);
-		// }catch(Exception $e){
-		// 	return back()->withErrors(['Error1'=>'Error del servidor']);
-		// }
+		}catch(Exception $e){
+			return back()->withErrors(['Error1'=>'Error del servidor']);
+		}
 	}
 
 	// FORMULARIO NUEVA VENTA
