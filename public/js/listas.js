@@ -46,7 +46,6 @@ function iconos(dicc){
 		var varVer = '<img src="/img/lupa.png" class="icono btnVer" onclick="visualizarPDF(\''+nombre+'\')">';
 		var varDescarga = ' <a href="/download/'+nombre+'" target="_blank"> <img src="/img/descarga.png" class="icono btnDescarga" > </a> '
 
-// '<img src="/img/descarga.png" class="icono btnDescarga" onclick="descargarPDF(\''+nombre+'\')">';
 		dicc[llave].editar = varEditar;
 		dicc[llave].ver = varVer;
 		dicc[llave].descarga = varDescarga;

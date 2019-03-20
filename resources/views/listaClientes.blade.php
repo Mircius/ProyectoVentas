@@ -28,8 +28,12 @@
 		<div class="row bg-dark d-flex justify-content-center">
 			<h1 class="bg-dark text-white">Clientes</h1>
 		</div>
+			<!-- Migas de pan -->
 
-		<br>
+			<div class="row breadcrumbs">
+				 {{ Breadcrumbs::render('Clientes') }}
+			</div>
+
 		<!-- Boton nuevos clientes -->
 		<div class="row">
 			<div class="col-md">

@@ -43,7 +43,10 @@
 				</div>
 				
 			</div>
-			<br>
+			<!-- Migas de pan -->
+			<div class="row breadcrumbs">
+				 {{ Breadcrumbs::render('Detalle_Cliente',$cliente['id']) }}		
+ 			</div>
 			<div class="atras">
 				<a href="{{ URL::previous() }}" type="button" class="btn btn-dark float-right"> Atrás </a>
 			</div>
