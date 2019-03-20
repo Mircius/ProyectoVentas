@@ -100,7 +100,18 @@
 					<br>
 
 				<!-- Boton nueva Venta -->
-				<!-- {{ URL::to('/cliente/$id/nuevaVenta') }} -->
+				
+				<div class="row filtro">
+					<!-- Campos de filtrado -->
+					<div class="col-md-4"></div>
+					<div class="col-md-4 form-group form-inline">
+						<form method="GET" id ="filtradoVentas" action="/cliente/{{ $cliente->id }}">	
+								<input type="text" class="form-control inline" id="filtro" name="filtro" value="">
+								<button type="submit" class="btn btn-dark" id="btnFiltro">Filtrar</button>
+						</form>
+					</div>
+					<div class="col-md-4"></div>
+				</div>
 
 				<div class="row">
 					<div class="col-md agregarVenta">
@@ -124,6 +135,13 @@
 							</div>	
 						</div>
 					</div>
+					<div class="row paginado">
+						<div class="col-md"></div>
+						<div class="col-md">
+						{{ $ventas->links() }}
+						</div>
+						<div class="col-md"></div>
+					</div>
 
 
 	<script>
@@ -132,7 +150,7 @@
 
 		$(document).ready(function() {
 			datosCliente(cliente);
-			listaVentas(ventas);
+			listaVentas(ventas.data);
 			enlace(cliente);
 		});		
 	</script>

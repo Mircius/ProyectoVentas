@@ -13,7 +13,7 @@ use Illuminate\Support\Collection;
 
 class ClientesControler extends Controller
 {
-	//Vista Principal
+	//Vista Principal DEPRECATED
     public function getClientes(){
 		$clientes = Cliente::select('id', 'nombre', 'email', 'cifNif', 'codigoPostal', 'provincia', 'localidad')->paginate(5);
 
@@ -48,12 +48,26 @@ class ClientesControler extends Controller
 	}
 
 	//Formulario de edicion de clientes
-	public function edit($id){
+	public function edit(Request $request, $id){
 		try{
 			$cliente = Cliente::find($id);
-			$ventas = Venta::where('idCliente', $id)->get();
+			// $ventas = Venta::where('idCliente', $id)->get();
 
-			return view('cliente', ['cliente'=>$cliente], ['ventas'=>$ventas]);
+			$filtro = $request->input('filtro');
+
+			$ventas = Venta::select('id', 'idCliente', 'created_at', 'updated_at', 'descripcion')
+			->where('idCliente', $id)
+			->where(function($q) use ($filtro) { $q->where('id', 'like', '%'.$filtro.'%')
+				->orwhere('created_at', 'like', '%'.$filtro.'%')
+				->orwhere('updated_at', 'like', '%'.$filtro.'%');
+			})->paginate(5);
+    	
+	    	$filtro = $request->get('filtro');
+	    	echo $filtro;
+
+	    	$ventas->appends(['filtro' => $filtro])->links();
+
+			 return view("cliente", compact('cliente', 'ventas', 'enlace'));
 
 		}catch(Exception $e){
 			return back()->withErrors(['Error1'=>'Error del servidor']);		
@@ -63,20 +77,18 @@ class ClientesControler extends Controller
 	//Funcion de actualizacion de clientes
 	public function update(Request $request, $id){
 		try{
-		$cliente = Cliente::find($id);
-			$cliente->nombre = $request->input('nombre');
-			$cliente->email = $request->input('email');
-			$cliente->telefono = $request->input('telefono');
-			$cliente->direccion = $request->input('direccion');
-			// $cliente->cifNif = $request->input('cifNif');
-			$cliente->provincia = $request->input('provincia');
-			$cliente->localidad = $request->input('localidad');
-			$cliente->codigoPostal = $request->input('codigoPostal');
-		$cliente->save();
+			$cliente = Cliente::find($id);
+				$cliente->nombre = $request->input('nombre');
+				$cliente->email = $request->input('email');
+				$cliente->telefono = $request->input('telefono');
+				$cliente->direccion = $request->input('direccion');
+				// $cliente->cifNif = $request->input('cifNif');
+				$cliente->provincia = $request->input('provincia');
+				$cliente->localidad = $request->input('localidad');
+				$cliente->codigoPostal = $request->input('codigoPostal');
+			$cliente->save();
 
-		$ventas = Venta::where('idCliente', $id)->get();
-
-		return view('cliente', ['cliente'=>$cliente], ['ventas'=>$ventas]);
+			return back();
 		}catch(Exception $e){
 			return back()->withErrors(['Error1'=>'Error del servidor']);
 		}
@@ -104,9 +116,10 @@ class ClientesControler extends Controller
 
 
 			$cliente = Cliente::find($id);
-			$ventas = Venta::where('idCliente', $id)->get();
+			$ventas = Venta::where('idCliente', $id)->paginate(5);
 
-			return view('cliente', ['cliente'=>$cliente], ['ventas'=>$ventas]);
+			return redirect()->route('cliente');
+			// return view("cliente", compact('cliente', 'ventas', 'enlace'));
 		}catch(Exception $e){
 		 	return back()->withErrors(['Error1'=>'Error del servidor']);		
 		}
@@ -199,7 +212,7 @@ class ClientesControler extends Controller
 	}
 
 	
-
+	// VISTA PRINCIPAL CON FILTROS
     public function filtroClientes(Request $request){
     	$filtro = $request->input('filtro');
 
@@ -212,17 +225,7 @@ class ClientesControler extends Controller
 		 return view("listaClientes", compact('clientes', 'enlace'));
     }
 
-    public function filtroVentas(Request $request){
-    	$filtro = $request->input('filtro');
 
-    	$busqueda = $request->get('filtro');
-
-    	$clientes = Cliente::select('id', 'nombre', 'email', 'cifNif', 'codigoPostal', 'provincia', 'localidad')->where('nombre', 'like', '%'.$filtro.'%')->orwhere('localidad', 'like', '%'.$filtro.'%')->orwhere('cifNif', 'like', '%'.$filtro.'%')->get();
-
-    	
-
-		 return view("listaClientes", compact('clientes', 'busqueda'));
-    }
 
 }
 
