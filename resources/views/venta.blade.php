@@ -237,7 +237,7 @@
 									<input type="text" class="form-control" name="estadoUp" id="estadoUp">
 
 									<input type="file" class="form-control-file" id="archivoUp" name="archivoUp">
-									<button type="submit" class="btn btn-dark float-right"> Guardar </button>
+									<button type="submit" onclick="checkFormSubidaArchivosUp('formArchivoUp');return false;" class="btn btn-dark float-right"> Guardar </button>
 								</div>
 							</form>
 						</div>

@@ -183,6 +183,13 @@ function checkFormSubidaArchivos(idForm){
     comprueba_extension(idForm, filePath);
  
 }
+//Funcion que verifica que al modificar el archivo este sea correcto.
+function checkFormSubidaArchivosUp(idForm){
+    var fileInput = $("#archivoUp");
+    var filePath = fileInput.val();
+    comprueba_extension(idForm, filePath);
+ 
+}
 
 //Comprobacion NIF/CIF/NIE/DNI
 var NIF_Type = {

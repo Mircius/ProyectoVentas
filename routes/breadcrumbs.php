@@ -2,7 +2,7 @@
 
 // Inicio (Clientes)
 Breadcrumbs::for('Clientes',function($trail){
-    $trail->push('Clientes',route('/'));
+    $trail->push('Lista Clientes',route('/'));
 });
 //Crear Cliente
 Breadcrumbs::for('Crear',function($trail){
