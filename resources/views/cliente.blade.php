@@ -63,88 +63,89 @@
 				 	<div class="row">
 						<div class="form-group col-md-6 form-inline">
 							<label class="labelCliente" for="nombre">Nombre:</label>
-							<input type="text" class="form-control editable" name="nombre" id="nombre" disabled>
+							<input type="text" class="form-control editable" name="nombre" id="nombre" readonly>
 						</div>
 						<div class="form-group col-md-6 form-inline">
 							<label class="labelCliente" for="email">Email:</label>
-							<input type="text" class="form-control editable" name="email" id="email" disabled>
+							<input type="text" class="form-control editable" name="email" id="email" readonly>
 						</div>
 					</div>
 					<div class="row">
 						<div class="form-group col-md-6 form-inline">
 							<label class="labelCliente" for="telefono">Teléfono:</label>
-							<input type="text" class="form-control editable" name="telefono" id="telefono" disabled>
+							<input type="text" class="form-control editable" name="telefono" id="telefono" readonly>
 						</div>
 						<div class="form-group col-md-6 form-inline">
 							<label class="labelCliente" for="direccion">Dirección:</label>
-							<input type="text" class="form-control editable" name="direccion" id="direccion" disabled>
+							<input type="text" class="form-control editable" name="direccion" id="direccion" readonly>
 						</div>
 					</div>
 					<div class="row">
 						<div class="form-group col-md-6 form-inline">
 							<label class="labelCliente" for="cifNif">CIF/NIF:</label>
-							<input type="text" class="form-control" name="cifNif" id="cifNif" disabled>
+							<input type="text" class="form-control" name="cifNif" id="cifNif" readonly>
 						</div>
 						<div class="form-group col-md-6 form-inline">
 							<label class="labelCliente" for="provincia">Provincia:</label>
-							<input type="text" class="form-control editable" name="provincia" id="provincia" disabled>
+							<input type="text" class="form-control editable" name="provincia" id="provincia" readonly>
 						</div>
 					</div>
 					<div class="row">
 						<div class="form-group col-md-6 form-inline">
 							<label class="labelCliente" for="localidad">Localidad:</label>
-							<input type="text" class="form-control editable" name="localidad" id="localidad" disabled>
+							<input type="text" class="form-control editable" name="localidad" id="localidad" readonly>
 						</div>
 						<div class="form-group col-md-6 form-inline">
 							<label class="labelCliente" for="codigoPostal">Código Postal:</label>
-							<input type="text" class="form-control editable" name="codigoPostal" id="codigoPostal" disabled>
+							<input type="text" class="form-control editable" name="codigoPostal" id="codigoPostal" readonly>
 						</div>
 					</div>
-					<br>
-
-				<!-- Boton nueva Venta -->
+				</form>
+			</div>
+			<div class="col-md-1 col-lg-1"></div>
+		</div>
+		<br>
+		<div class="row filtro">
+			<!-- Campos de filtrado -->
+			<div class="col-md-4"></div>
+			<div class="col-md-4 form-group form-inline">
+				<form method="GET" id ="filtradoVentas" action="/cliente/{{ $cliente->id }}">	
+						<input type="text" class="form-control inline" id="filtro" name="filtro" value="">
+						<button type="submit" class="btn btn-dark" id="btnFiltro">Filtrar</button>
+				</form>
+			</div>
+			<div class="col-md-4"></div>
+		</div>
+		<!-- Boton nueva Venta -->
+		<div class="row">
+			<div class="col-md agregarVenta">
 				
-				<div class="row filtro">
-					<!-- Campos de filtrado -->
-					<div class="col-md-4"></div>
-					<div class="col-md-4 form-group form-inline">
-						<form method="GET" id ="filtradoVentas" action="/cliente/{{ $cliente->id }}">	
-								<input type="text" class="form-control inline" id="filtro" name="filtro" value="">
-								<button type="submit" class="btn btn-dark" id="btnFiltro">Filtrar</button>
-						</form>
-					</div>
-					<div class="col-md-4"></div>
-				</div>
-
-				<div class="row">
-					<div class="col-md agregarVenta">
-						
-					</div>
-				</div>
-				<!-- Tabla ventas -->
-					<div class="row">
-						<div class="col-md tabla centered">
-							<div class="encabezado">
-								<div class="row">
-									<div class="col-md">Id</div>
-									<div class="col-md">Fecha de creación</div>
-									<div class="col-md">Fecha última modificación</div>
-								</div>
-							</div>
-							<hr align="left">
-							<div class="cuerpo" id="tbodyVentas">
-								<!-- Datos clientes -->
-
-							</div>	
+			</div>
+		</div>
+		<!-- Tabla ventas -->
+			<div class="row">
+				<div class="col-md tabla centered">
+					<div class="encabezado">
+						<div class="row">
+							<div class="col-md">Id</div>
+							<div class="col-md">Fecha de creación</div>
+							<div class="col-md">Fecha última modificación</div>
 						</div>
 					</div>
-					<div class="row paginado">
-						<div class="col-md"></div>
-						<div class="col-md">
-						{{ $ventas->links() }}
-						</div>
-						<div class="col-md"></div>
-					</div>
+					<hr align="left">
+					<div class="cuerpo" id="tbodyVentas">
+						<!-- Datos clientes -->
+
+					</div>	
+				</div>
+			</div>
+			<div class="row paginado">
+				<div class="col-md"></div>
+				<div class="col-md">
+				{{ $ventas->links() }}
+				</div>
+				<div class="col-md"></div>
+			</div>
 
 
 	<script>
