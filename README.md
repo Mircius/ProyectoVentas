@@ -5,7 +5,7 @@ Miembros del equipo:
    - Andrea Vidal Paniagua
    - Sergi Coma Corcuera
 
-Una vez hecho el clone de la aplicación debemos seguir los pasos que nos indica en este enlace
+Una vez hecho el clone de la aplicación debemos seguir los pasos que nos indica en este [enlace](https://cacauet.org/wiki/index.php/Laravel#Treballant_amb_GIT_i_clonant)
 
 Una vez tenemos el .env y lo hemos configurado para tu base de datos necesitamos cargar todas las tablas para poder 
 almacenar los datos. Para ello usaremos la consola, donde nos posicionaremos en la carpeta del proyecto y se usara el
