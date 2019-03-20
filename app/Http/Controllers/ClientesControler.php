@@ -63,7 +63,6 @@ class ClientesControler extends Controller
 			})->paginate(5);
     	
 	    	$filtro = $request->get('filtro');
-	    	echo $filtro;
 
 	    	$ventas->appends(['filtro' => $filtro])->links();
 
