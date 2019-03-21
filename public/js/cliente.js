@@ -22,7 +22,7 @@ function enlace(cliente){
 
 //Habilita los campos para poder editar el cliente
 function editar(){
-	$('.editable').removeAttr('disabled');
+	$('.editable').removeAttr('readonly');
 	$('#editarCliente').remove();
 	$('#editarGuardar').append('<button id="guardarCliente" onclick="guardar();return false;"><img id="btnGuardarCliente" src="/img/okBlanco.png" height="45" width="45"></button>');
 }
@@ -31,7 +31,7 @@ function editar(){
 function guardar(){
 	if(checkFormModificarClientes ("#editar")){
 		$('#editar').submit();
-		$('.editable').attr('disabled', 'true');
+		$('.editable').attr('readonly', 'true');
 		$('#guardarCliente').remove();
 		$('#editarGuardar').append('<img id="editarCliente" src="/img/editBlanco.png" height="45" width="55" onclick="editar()">');
 

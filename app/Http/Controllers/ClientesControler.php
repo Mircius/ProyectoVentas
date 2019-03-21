@@ -57,7 +57,8 @@ class ClientesControler extends Controller
 
 			$ventas = Venta::select('id', 'idCliente', 'created_at', 'updated_at', 'descripcion')
 			->where('idCliente', $id)
-			->where(function($q) use ($filtro) { $q->where('id', 'like', '%'.$filtro.'%')
+			->where(function($q) use ($filtro) { 
+				$q->where('id', 'like', '%'.$filtro.'%')
 				->orwhere('created_at', 'like', '%'.$filtro.'%')
 				->orwhere('updated_at', 'like', '%'.$filtro.'%');
 			})->paginate(5);

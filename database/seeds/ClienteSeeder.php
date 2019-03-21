@@ -55,7 +55,7 @@ class ClienteSeeder extends Seeder
     	for ($i=0; $i < 30; $i++) { 
 
 	        DB::table('ventas')->insert([
-	            'idCliente' => rand(100, 120),
+	            'idCliente' => rand(1, 30),
 	            'created_at' => Carbon::create(rand(2000, 2018), rand(1, 12), rand(1, 12)),
 	            'updated_at' => Carbon::create(rand(2000, 2018), rand(1, 12), rand(1, 12))
 	        ]);
