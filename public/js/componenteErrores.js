@@ -180,17 +180,51 @@ function comprueba_extension(formulario, archivo) {
 function checkFormSubidaArchivos(idForm){
     var fileInput = $("#archivo");
     var filePath = fileInput.val();
-    comprueba_extension(idForm, filePath);
+    if (checkEstadoSubirArchivo(idForm)) {
+        comprueba_extension(idForm, filePath);
+    }
+
  
 }
 //Funcion que verifica que al modificar el archivo este sea correcto.
 function checkFormSubidaArchivosUp(idForm){
     var fileInput = $("#archivoUp");
     var filePath = fileInput.val();
-    comprueba_extension(idForm, filePath);
+    if (checkEstadoSubirArchivoUp(idForm)) {
+      comprueba_extension(idForm, filePath);
+    }
  
 }
 
+function comprobacionEstadoArchivo(idInput, logica, idForm) {
+    if( $(idInput).val().match(logica)){
+     return true;
+    }else{
+      contadorErrores++;
+      return false;
+    }
+}
+function checkEstadoSubirArchivo(idForm){
+    contadorErrores = 0;
+    comprobacionEstadoArchivo("#estado", logicaVacio, idForm);
+    console.log(contadorErrores);
+    if (contadorErrores!=0) {
+      alert("El campo estado no puede estar vacio.")
+      return false;
+    }
+    return true;
+
+}
+function checkEstadoSubirArchivoUp(idForm){
+    contadorErrores = 0;
+    comprobacionEstadoArchivo("#estadoUp", logicaVacio, idForm);
+     if (contadorErrores!=0) {
+      alert("El campo estado no puede estar vacio.")
+      return false;
+    }
+    return true;
+
+}
 //Comprobacion NIF/CIF/NIE/DNI
 var NIF_Type = {
     'A':'Sociedad Anónima',
